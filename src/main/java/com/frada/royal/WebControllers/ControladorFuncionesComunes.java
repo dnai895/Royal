@@ -38,6 +38,7 @@ public class ControladorFuncionesComunes {
     protected GestorMesas gMesas;
     
     public void cargaContenidoComun(HttpServletRequest request, ModelAndView view) {
+        view.addObject("restaurante", restaurante);
         view.addObject("contextpath", Constantes.CONTEXTPATH);
     }
     

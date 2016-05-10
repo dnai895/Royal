@@ -49,10 +49,10 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Estadísticas<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="full-width.html">Clientes</a>
+                                <a href="#">Clientes</a>
                             </li>
                             <li>
-                                <a href="sidebar.html">Ventas</a>
+                                <a href="#">Ventas</a>
                             </li>
                         </ul>
                     </li>
@@ -60,15 +60,15 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Perfil<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="full-width.html">Datos restaurante</a>
+                                <a href="${contextpath}/restaurante/datos.html">Datos restaurante</a>
                             </li>
                             <li>
-                                <a href="sidebar.html">Datos a mostrar búsquedas</a>
+                                <a href="#">Datos a mostrar búsquedas</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="contact.html">Soporte</a>
+                        <a href="#">Soporte</a>
                     </li>
                 </ul>
             </div>

@@ -49,6 +49,26 @@ public class GestorUsuarios {
         }
     }
     
+    public void modificaUsuario(Restaurante restaurante) {
+        String f1passwd = "";
+        if(restaurante.getPassword() != null && restaurante.getCfpassword() != null 
+            && !restaurante.getPassword().isEmpty() && !restaurante.getCfpassword().isEmpty()
+            && checkDataUsuario(restaurante)) {
+                f1passwd = " passwd = '"+gHash.md5(restaurante.getPassword())+"', ";
+        }
+                
+        try {
+            String query = "UPDATE restaurante SET nombre = ?, direccion = ?, telefono = ?, username = ?, "
+                    + f1passwd+" web = ?, email = ? "
+                    + "WHERE idRestaurante = ?";
+            jdbcTemplate.update(query, new Object[]{restaurante.getNombre(), restaurante.getDireccion(), restaurante.getTelefono(),
+            restaurante.getUsername(), restaurante.getWeb(), 
+            restaurante.getEmail(), restaurante.getIdRestaurante()});
+        } catch(Exception e) {
+            General.log("GestorUsuarios", "ERROR en registraUsuario: "+e.getMessage());
+        }
+    }
+    
     public boolean login(String username, String password) {
         boolean logado = false;
         List<Int_String> lista = null;

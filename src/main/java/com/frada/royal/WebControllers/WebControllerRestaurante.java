@@ -8,6 +8,7 @@ package com.frada.royal.WebControllers;
 import com.frada.royal.Entidades.Int_String;
 import com.frada.royal.Entidades.Mesa;
 import com.frada.royal.Entidades.Producto;
+import com.frada.royal.Entidades.Restaurante;
 import com.frada.royal.Utilidades.Constantes;
 import com.frada.royal.Utilidades.General;
 import java.util.List;
@@ -26,6 +27,49 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/restaurante/*")
 public class WebControllerRestaurante extends ControladorFuncionesComunes{
+    
+    @RequestMapping(value="datos", method=RequestMethod.GET)
+    public ModelAndView viewData( HttpServletRequest request ) {
+        ModelAndView result = new ModelAndView("paginasRestaurante/datosRestaurante");
+        cargaContenidoComun(request, result);
+        return result;
+    } 
+    
+    @ResponseBody
+    @RequestMapping(value="datos", method=RequestMethod.POST)
+    public String serviceData( HttpServletRequest request ) {
+        ModelAndView result = new ModelAndView("paginasRestaurante/datosRestaurante");
+        cargaContenidoComun(request, result);
+        
+        String nombre       = getParametroString("nombre", request);
+        String direccion    = getParametroString("direccion", request);
+        String telefono     = getParametroString("telefono", request);
+        String email        = getParametroString("email", request);
+        String username     = getParametroString("username", request);
+        String web          = getParametroString("web", request);
+        String password     = getParametroString("password", request);
+        String cfpassword   = getParametroString("cfpassword", request);
+        
+        restaurante.setNombre(nombre);
+        restaurante.setDireccion(direccion);
+        restaurante.setTelefono(telefono);
+        restaurante.setUsername(username);
+        restaurante.setWeb(web);
+        restaurante.setEmail(email);
+        restaurante.setPassword(password);
+        restaurante.setCfpassword(cfpassword);
+        
+        gUsuarios.modificaUsuario(restaurante);
+        
+        String respuesta = "ok";
+        if(restaurante.getPassword() != null && restaurante.getCfpassword() != null
+            && !restaurante.getPassword().isEmpty() && !restaurante.getCfpassword().isEmpty()
+            && !gUsuarios.checkDataUsuario(restaurante)) {
+            respuesta = "kopasswd";
+        }
+        
+        return respuesta;
+    } 
     
     @RequestMapping(value="home", method=RequestMethod.GET)
     public ModelAndView home( HttpServletRequest request ) {

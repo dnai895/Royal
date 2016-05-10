@@ -16,28 +16,7 @@
     </head>
     <body>
 
-        <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                <!--    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button> -->
-                    <a class="navbar-brand" href="index.html">CLASS ROYAL</a>
-                </div>
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav navbar-right">
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-            </div>
-            <!-- /.container -->
-        </nav>
+        <jsp:include page="../bloques/menu.jsp"/>
 
         <!-- Page Content -->
         <div class="container panel padding-twice">
@@ -66,7 +45,7 @@
                                 <div class="control-group form-group">
                                     <div class="controls">
                                         <label>Nombre del restaurante:</label>
-                                        <input class="form-control" id="nombre" name="nombre" value=""/>
+                                        <input class="form-control" id="nombre" name="nombre" value="${restaurante.getNombre()}"/>
                                     </div>
                                 </div>
                             </div>
@@ -76,7 +55,7 @@
                                 <div class="control-group form-group">
                                     <div class="controls">
                                         <label>Direccion:</label>
-                                        <input class="form-control" id="direccion" name="direccion" value=""/>
+                                        <input class="form-control" id="direccion" name="direccion" value="${restaurante.getDireccion()}"/>
                                     </div>
                                 </div>
                             </div>
@@ -86,7 +65,7 @@
                                 <div class="control-group form-group">
                                     <div class="controls">
                                         <label>Telefono:</label>
-                                        <input class="form-control" id="telefono" name="telefono" value=""/>
+                                        <input class="form-control" id="telefono" name="telefono" value="${restaurante.getDireccion()}"/>
                                     </div>
                                 </div>
                             </div>
@@ -94,7 +73,7 @@
                                 <div class="control-group form-group">
                                     <div class="controls">
                                         <label>Email:</label>
-                                        <input class="form-control" id="email" name="email" value=""/>
+                                        <input class="form-control" id="email" name="email" value="${restaurante.getEmail()}"/>
                                     </div>
                                 </div>
                             </div>
@@ -104,7 +83,7 @@
                                 <div class="control-group form-group">
                                     <div class="controls">
                                         <label>Web:</label>
-                                        <input class="form-control" id="web" name="web" value=""/>
+                                        <input class="form-control" id="web" name="web" value="${restaurante.getWeb()}"/>
                                     </div>
                                 </div>
                             </div>
@@ -114,7 +93,7 @@
                                 <div class="control-group form-group">
                                     <div class="controls">
                                         <label>Username:</label>
-                                        <input class="form-control" id="username" name="username" value=""/>
+                                        <input class="form-control" id="username" name="username" value="${restaurante.getUsername()}"/>
                                     </div>
                                 </div>
                             </div>
@@ -141,7 +120,7 @@
                             <div class="col-lg-12">
                                 <div class="control-group form-group">
                                     <div class="controls">
-                                        <input type="button" class="btn btn-primary fright" value="Envía" id="submit"/>
+                                        <input type="button" class="btn btn-primary fright" value="Guardar" id="submit"/>
                                     </div>
                                 </div>
                             </div>
@@ -156,13 +135,13 @@
             $("#submit").click(function() {
                 $.ajax({
                     type: "POST",
-                    url: "${contextpath}/usuarios/registro.html", 
+                    url: "${contextpath}/restaurante/datos.html", 
                     data: $("#registro").serialize(),
                     success: function(result){
                         if(result === "ok") {
-                            alert("Restaurante registrado correctamente");
+                            alert("Datos guardados correctamente");
                             window.location = "${contextpath}/restaurante/home.html";
-                        } else {
+                        } else if (result === "kopasswd") {
                             alert("Las contraseñas no coinciden. Vuelva a introducirlas y vuelva a intentarlo.");
                         }
                     },
