@@ -65,18 +65,18 @@ public class WebControllerUsuarios extends ControladorFuncionesComunes {
         return logado;
     } 
     
-    @RequestMapping(value="login", method=RequestMethod.GET)
+    @RequestMapping(value="landing", method=RequestMethod.GET)
     public ModelAndView viewLogin( HttpServletRequest request ) {
-        ModelAndView result = new ModelAndView("paginasRestaurante/login");
+        ModelAndView result = new ModelAndView("/landing");
         cargaContenidoComun(request, result);
 
         return result;
     } 
     
     @ResponseBody
-    @RequestMapping(value="login", method=RequestMethod.POST)
+    @RequestMapping(value="landing", method=RequestMethod.POST)
     public String serviceLogin( HttpServletRequest request ) {
-        ModelAndView result = new ModelAndView("paginasRestaurante/login");
+        ModelAndView result = new ModelAndView("/landing");
         cargaContenidoComun(request, result);
         
         String res      = null;
@@ -93,6 +93,7 @@ public class WebControllerUsuarios extends ControladorFuncionesComunes {
         } else {
             res = "nok";
         }
+        System.out.println(res);
                 
         return res;
     } 

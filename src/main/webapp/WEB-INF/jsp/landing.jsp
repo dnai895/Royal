@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Restaurant Manager</title>
+    <title>Class Royal</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -41,30 +41,137 @@
             <div class="intro-text">
                 <div class="intro-lead-in">Bienvenid@ a <!--Class Royal--><img alt="logo" src="img/logo.png" style="margin: -82px 0 0 -12px"/></div>
                 <div class="intro-heading">¿Eres un cliente o un restaurante?</div>
-                <a href="#" class="page-scroll btn btn-xl">Soy un cliente</a> 
-                <a href="${contextpath}/usuarios/login.html" class="page-scroll btn btn-xl">Soy un restaurante</a>
+                <a href="" class="page-scroll btn btn-xl" data-toggle="modal" data-target="#userLogin">Soy un cliente</a> 
+                <a href="" class="page-scroll btn btn-xl" data-toggle="modal" data-target="#restLogin">Soy un restaurante</a>
             </div>
         </div>
     </header>
+        <!-- Modal -->
+    <div id="restLogin" class="modal fade" role="dialog">
+      <div class="modal-dialog">
 
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Login restaurante</h4>
+          </div>
+          <div class="modal-body">
+            <form id="login" name="login" method="POST" action="${contextpath}/usuarios/landing.html">
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label>Usuario:</label>
+                        <input class="form-control" id="username" name="username" value=""/>
+                    </div>
+                </div>          
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label>Contraseña:</label>
+                        <input type="password" class="form-control" id="passwd" name="passwd" value=""/>
+                        <span class="help-block fright"><a href="${contextpath}/usuarios/registro.html">¿Aún no estás registrado? ¡Regístrate!</a></span>
+                        <input type="button" class="btn btn-primary fright" value="Entrar" id="submitRest"/>
+                    </div>
+                </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
 
+      </div>
+    </div>
+                        
+        <!-- Modal -->
+    <div id="userLogin" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Login cliente</h4>
+          </div>
+          <div class="modal-body">
+            <form id="loginUser" name="login" method="POST" action="${contextpath}/usuarios/landing.html">
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label>Usuario:</label>
+                        <input class="form-control" id="username" name="username" value=""/>
+                    </div>
+                </div>          
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label>Contraseña:</label>
+                        <input type="password" class="form-control" id="passwd" name="passwd" value=""/>
+                        <span class="help-block fright"><a href="${contextpath}/usuarios/registro_usuario.html">¿Aún no estás registrado? ¡Regístrate!</a></span>
+                        <input type="button" class="btn btn-primary fright" value="Entrar" id="submitUser"/>
+                    </div>
+                </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+
+      </div>
+    </div>                        
+        
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="scripts/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
 
     <!-- Plugin JavaScript -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-    <script src="js/classie.js"></script>
-    <script src="js/cbpAnimatedHeader.js"></script>
+    <script src="scripts/classie.js"></script>
+    <script src="scripts/cbpAnimatedHeader.js"></script>
 
     <!-- Contact Form JavaScript -->
-    <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
+    <script src="scripts/jqBootstrapValidation.js"></script>
+    <script src="scripts/contact_me.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="js/agency.js"></script>
+    <script src="scripts/agency.js"></script>
+    
+    <script type="text/javascript">
+        $("#submitRest").click(function() {
+            $.ajax({
+                type: "POST",
+                url: "${contextpath}/usuarios/landing.html", 
+                data: $("#login").serialize(),
+                success: function(result){
+                    if(result === "ok") {
+                        window.location = "${contextpath}/restaurante/home.html";
+                    } else {
+                        alert("¡Datos incorrectos!");
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert("UPS! ha habido un error en el proceso. Vuelva a intentarlo o contacte con el equipo técnico.");
+                }
+            });
+        });
+        $("#submitUser").click(function() {
+            $.ajax({
+                type: "POST",
+                url: "${contextpath}/usuarios/landing.html", 
+                data: $("#loginUser").serialize(),
+                success: function(result){
+                    if(result === "ok") {
+                        window.location = "${contextpath}/user/home.html";
+                    } else {
+                        alert("¡Datos incorrectos!");
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert("UPS! ha habido un error en el proceso. Vuelva a intentarlo o contacte con el equipo técnico.");
+                }
+            });
+        });
+    </script>    
 
 </body>
 
