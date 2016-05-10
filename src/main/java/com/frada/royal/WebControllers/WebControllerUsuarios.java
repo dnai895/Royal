@@ -29,11 +29,13 @@ public class WebControllerUsuarios extends ControladorFuncionesComunes {
         return result;
     } 
     
+    @ResponseBody
     @RequestMapping(value="registro", method=RequestMethod.POST)
-    public ModelAndView serviceRegistro( HttpServletRequest request ) {
+    public String serviceRegistro( HttpServletRequest request ) {
         ModelAndView result = new ModelAndView("paginasRestaurante/registro");
         cargaContenidoComun(request, result);
         
+        String logado = "nok";
         String nombre       = getParametroString("nombre", request);
         String direccion    = getParametroString("direccion", request);
         String telefono     = getParametroString("telefono", request);
@@ -43,21 +45,24 @@ public class WebControllerUsuarios extends ControladorFuncionesComunes {
         String password     = getParametroString("password", request);
         String cfpassword   = getParametroString("cfpassword", request);
         
-        Restaurante restaurante = new Restaurante();
-        restaurante.setNombre(nombre);
-        restaurante.setDireccion(direccion);
-        restaurante.setTelefono(telefono);
-        restaurante.setUsername(username);
-        restaurante.setWeb(web);
-        restaurante.setEmail(email);
-        restaurante.setPassword(password);
-        restaurante.setCfpassword(cfpassword);
+        Restaurante rest = new Restaurante();
+        rest.setNombre(nombre);
+        rest.setDireccion(direccion);
+        rest.setTelefono(telefono);
+        rest.setUsername(username);
+        rest.setWeb(web);
+        rest.setEmail(email);
+        rest.setPassword(password);
+        rest.setCfpassword(cfpassword);
         
-        if(gUsuarios.checkDataUsuario(restaurante)) {
-            gUsuarios.registraUsuario(restaurante);
+        if(gUsuarios.checkDataUsuario(rest)) {
+            gUsuarios.registraUsuario(rest);
+            restaurante.setRestaurante(rest);
+            restaurante.setLogado(true);
+            logado = "ok";
         }
         
-        return result;
+        return logado;
     } 
     
     @RequestMapping(value="login", method=RequestMethod.GET)

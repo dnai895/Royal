@@ -160,8 +160,12 @@
                     url: "${contextpath}/usuarios/registro.html", 
                     data: $("#registro").serialize(),
                     success: function(result){
-                        alert("Restaurante registrado correctamente");
-                        window.location = "${contextpath}/restaurante/home.html";
+                        if(result === "ok") {
+                            alert("Restaurante registrado correctamente");
+                            window.location = "${contextpath}/restaurante/home.html";
+                        } else {
+                            alert("Las contraseñas no coinciden. Vuelva a introducirlas y vuelva a intentarlo.");
+                        }
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
                         alert("UPS! ha habido un error en el proceso. Vuelva a intentarlo o contacte con el equipo técnico.");
