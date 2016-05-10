@@ -45,9 +45,10 @@
             <!-- Page Heading/Breadcrumbs -->
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Registro
-                        <small>registrate en tan solo 30 segundos!</small>
+                    <h1 class="page-header">Registro<br />
+                        <small>¡Regístrate en 30 segundos!</small>
                     </h1>
+
                 <!--    <ol class="breadcrumb">
                         <li><a href="index.html">Home</a>
                         </li>
@@ -76,7 +77,7 @@
                             <div class="col-lg-6">
                                 <div class="control-group form-group">
                                     <div class="controls">
-                                        <label>Direccion:</label>
+                                        <label>Dirección:</label>
                                         <input class="form-control" id="direccion" name="direccion" value=""/>
                                     </div>
                                 </div>
@@ -86,7 +87,7 @@
                             <div class="col-lg-6">
                                 <div class="control-group form-group">
                                     <div class="controls">
-                                        <label>Telefono:</label>
+                                        <label>Teléfono:</label>
                                         <input class="form-control" id="telefono" name="telefono" value=""/>
                                     </div>
                                 </div>
