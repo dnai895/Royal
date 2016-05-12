@@ -41,7 +41,7 @@
             <div class="intro-text">
                 <div class="intro-lead-in">Bienvenid@ a <!--Class Royal--><img alt="logo" src="img/logo.png" style="margin: -82px 0 0 -12px"/></div>
                 <div class="intro-heading">¿Eres un cliente o un restaurante?</div>
-                <a href="" class="page-scroll btn btn-xl" data-toggle="modal" data-target="#userLogin">Soy un cliente</a> 
+                <a href="${contextpath}/buscador/" class="page-scroll btn btn-xl">Soy un cliente</a> 
                 <a href="" class="page-scroll btn btn-xl" data-toggle="modal" data-target="#restLogin">Soy un restaurante</a>
             </div>
         </div>
@@ -80,43 +80,7 @@
         </div>
 
       </div>
-    </div>
-                        
-        <!-- Modal -->
-    <div id="userLogin" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Login cliente</h4>
-          </div>
-          <div class="modal-body">
-            <form id="loginUser" name="login" method="POST" action="${contextpath}/usuarios/landing.html">
-                <div class="control-group form-group">
-                    <div class="controls">
-                        <label>Usuario:</label>
-                        <input class="form-control" id="username" name="username" value=""/>
-                    </div>
-                </div>          
-                <div class="control-group form-group">
-                    <div class="controls">
-                        <label>Contraseña:</label>
-                        <input type="password" class="form-control" id="passwd" name="passwd" value=""/>
-                        <span class="help-block fright"><a href="${contextpath}/usuarios/registro_usuario.html">¿Aún no estás registrado? ¡Regístrate!</a></span>
-                        <input type="button" class="btn btn-primary fright" value="Entrar" id="submitUser"/>
-                    </div>
-                </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-          </div>
-        </div>
-
-      </div>
-    </div>                        
+    </div>                    
         
     <!-- jQuery -->
     <script src="scripts/jquery.js"></script>
