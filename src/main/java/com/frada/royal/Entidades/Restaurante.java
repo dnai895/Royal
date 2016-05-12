@@ -26,6 +26,9 @@ public class Restaurante implements Serializable {
     private String  web;
     private String  email;
     
+    private String  descripcion;
+    private String  intro;
+    
     // Localizacion
     private String  latitud;
     private String  longitud;
@@ -152,4 +155,22 @@ public class Restaurante implements Serializable {
         this.setLatitud(rest.getLatitud());
         this.setLongitud(rest.getLongitud());
     }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getIntro() {
+        return intro;
+    }
+
+    public void setIntro(String intro) {
+        this.intro = intro;
+    }
+    
+    
 }
