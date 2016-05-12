@@ -92,24 +92,6 @@
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4 class="modal-title">Login cliente</h4>
           </div>
-          <div class="modal-body">
-            <form id="loginUser" name="login" method="POST" action="${contextpath}/usuarios/landing.html">
-                <div class="control-group form-group">
-                    <div class="controls">
-                        <label>Usuario:</label>
-                        <input class="form-control" id="username" name="username" value=""/>
-                    </div>
-                </div>          
-                <div class="control-group form-group">
-                    <div class="controls">
-                        <label>Contraseña:</label>
-                        <input type="password" class="form-control" id="passwd" name="passwd" value=""/>
-                        <span class="help-block fright"><a href="${contextpath}/usuarios/registro_usuario.html">¿Aún no estás registrado? ¡Regístrate!</a></span>
-                        <input type="button" class="btn btn-primary fright" value="Entrar" id="submitUser"/>
-                    </div>
-                </div>
-            </form>
-          </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
           </div>

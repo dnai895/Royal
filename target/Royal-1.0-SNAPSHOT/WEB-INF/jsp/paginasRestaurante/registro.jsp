@@ -96,7 +96,7 @@
                                 <div class="control-group form-group">
                                     <div class="controls">
                                         <label>Email:</label>
-                                        <input class="form-control" id="email" name="email" value=""/>
+                                        <input type="email" class="form-control" id="email" name="email" value=""/>
                                     </div>
                                 </div>
                             </div>
@@ -126,7 +126,7 @@
                                 <div class="control-group form-group">
                                     <div class="controls">
                                         <label>Password:</label>
-                                        <input type="password" class="form-control" id="password" name="password" value=""/>
+                                        <input type="password" class="form-control" name="password"/>
                                     </div>
                                 </div>
                             </div>
@@ -134,7 +134,7 @@
                                 <div class="control-group form-group">
                                     <div class="controls">
                                         <label>Confirma la password:</label>
-                                        <input type="password" class="form-control" id="cfpassword" name="cfpassword" value=""/>
+                                        <input type="password" class="form-control" name="cfpassword"/>
                                     </div>
                                 </div>
                             </div>
@@ -165,7 +165,7 @@
                             alert("Restaurante registrado correctamente");
                             window.location = "${contextpath}/restaurante/home.html";
                         } else {
-                            alert("Las contraseñas no coinciden. Vuelva a introducirlas y vuelva a intentarlo.");
+                            alert("¡Te faltan datos por introducir!");
                         }
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
