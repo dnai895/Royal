@@ -71,6 +71,13 @@ public class WebControllerRestaurante extends ControladorFuncionesComunes{
         return respuesta;
     } 
     
+    @RequestMapping(value="datos-busqueda", method=RequestMethod.GET)
+    public ModelAndView viewDataBusqueda( HttpServletRequest request ) {
+        ModelAndView result = new ModelAndView("paginasRestaurante/datosBusquedaRestaurante");
+        cargaContenidoComun(request, result);
+        return result;
+    } 
+    
     @RequestMapping(value="home", method=RequestMethod.GET)
     public ModelAndView home( HttpServletRequest request ) {
         ModelAndView result = new ModelAndView("paginasRestaurante/home");
@@ -227,4 +234,5 @@ public class WebControllerRestaurante extends ControladorFuncionesComunes{
         p.setIdRestaurante( restaurante.getIdRestaurante());
         return p;
     }
+    
 }

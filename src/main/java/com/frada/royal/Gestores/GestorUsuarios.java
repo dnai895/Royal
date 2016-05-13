@@ -29,9 +29,12 @@ public class GestorUsuarios {
     private GestorHash gHash;
     
     public boolean checkDataUsuario(Restaurante restaurante) {
-        boolean resultado = true;
-        if(!restaurante.getPassword().equals(restaurante.getCfpassword())) {
-            resultado = false;
+        boolean resultado = false;
+        if(!restaurante.getNombre().isEmpty() && !restaurante.getEmail().isEmpty()
+           && !restaurante.getDireccion().isEmpty() && !restaurante.getTelefono().isEmpty()
+           && !restaurante.getPassword().isEmpty() && !restaurante.getCfpassword().isEmpty()
+           && restaurante.getPassword().equals(restaurante.getCfpassword())) {
+            resultado = true;
         }
         return resultado;
     }

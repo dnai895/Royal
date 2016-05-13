@@ -31,7 +31,7 @@
 
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-xs-12">
                 <h1 class="page-header">Menú
                    <!-- <small>Subheading</small> -->
                 </h1>
@@ -47,7 +47,7 @@
 
         <!-- Projects Row -->
         <div class="row">
-            <div class="col-md-3 img-portfolio">
+            <div class="col-xs-3 img-portfolio">
                 <a href="${contextpath}/restaurante/plato.html">
                     <img class="img-responsive img-hover" src="http://placehold.it/750x450" alt="">
                     <h3 class="title-item">
@@ -56,7 +56,7 @@
                 </a>
                 
             </div>
-            <div class="col-md-3 img-portfolio">
+            <div class="col-xs-3 img-portfolio">
                 <a href="${contextpath}/restaurante/mesa.html">
                     <img class="img-responsive img-hover" src="http://placehold.it/750x450" alt="">
                     <h3 class="title-item">
@@ -65,12 +65,12 @@
                 </a>
                 
             </div>
-            <div class="col-md-3 img-portfolio">
+            <div class="col-xs-3 img-portfolio">
                 <a href="portfolio-item.html">
                     <img class="img-responsive img-hover" src="http://placehold.it/750x450" alt="">
                 </a>
             </div>
-            <div class="col-md-3 img-portfolio">
+            <div class="col-xs-3 img-portfolio">
                 <a href="portfolio-item.html">
                     <img class="img-responsive img-hover" src="http://placehold.it/750x450" alt="">
                 </a>
@@ -82,7 +82,7 @@
 
     <%--    <!-- Pagination -->
         <div class="row text-center">
-            <div class="col-lg-12">
+            <div class="col-xs-12">
                 <ul class="pagination">
                     <li>
                         <a href="#">&laquo;</a>

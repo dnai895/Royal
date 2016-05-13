@@ -31,7 +31,7 @@ public class GestorRestaurante {
         List<Restaurante> lrest = null;
         try {
             String query = "SELECT idRestaurante, nombre, direccion, telefono, latitud, longitud, "
-                    + "username, web, email "
+                    + "username, web, email, intro, descripcion "
                     + "FROM restaurante "
                     + "WHERE username = ? "
                     + "LIMIT 1";
@@ -40,6 +40,25 @@ public class GestorRestaurante {
             General.log("GestorRestaurante", "ERROR en getRestaurante: "+e.getMessage());
         }
         if(lrest != null && lrest.size() > 0 && lrest.get(0) != null && lrest.get(0).getUsername().equals(username)) {
+            return lrest.get(0);
+        } else {
+            return new Restaurante();
+        }
+    }
+    
+    public Restaurante getRestaurante(int idRestaurante) {
+        List<Restaurante> lrest = null;
+        try {
+            String query = "SELECT idRestaurante, nombre, direccion, telefono, latitud, longitud, "
+                    + "username, web, email "
+                    + "FROM restaurante "
+                    + "WHERE idRestaurante = ? "
+                    + "LIMIT 1";
+            lrest = jdbcTemplate.query(query, new RestauranteMapper(), new Object[]{idRestaurante});
+        } catch(Exception e) {
+            General.log("GestorRestaurante", "ERROR en getRestaurante: "+e.getMessage());
+        }
+        if(lrest != null && lrest.size() > 0 && lrest.get(0) != null) {
             return lrest.get(0);
         } else {
             return new Restaurante();
@@ -101,7 +120,7 @@ public class GestorRestaurante {
             jdbcTemplate.update(query, new Object[]{producto.getIdRestaurante(), producto.getNombre(), producto.getPrecio(), 
                                                     producto.getDescripcion(), producto.getIdTipoProducto()});
         } catch(Exception e) {
-            General.log("GestorUsuarios", "ERROR en registraUsuario: "+e.getMessage());
+            General.log("GestorRestaurante", "ERROR en registraUsuario: "+e.getMessage());
         }
     }
     
@@ -113,7 +132,7 @@ public class GestorRestaurante {
                             producto.getDescripcion(), producto.getIdTipoProducto(), producto.getIdProducto(),
                             producto.getIdRestaurante()});
         } catch(Exception e) {
-            General.log("GestorUsuarios", "ERROR en registraUsuario: "+e.getMessage());
+            General.log("GestorRestaurante", "ERROR en registraUsuario: "+e.getMessage());
         }
     }
     
@@ -123,7 +142,21 @@ public class GestorRestaurante {
                     + "WHERE idProducto = ? AND idRestaurante = ?";
             jdbcTemplate.update(query, new Object[]{idProducto, idRestaurante});
         } catch(Exception e) {
-            General.log("GestorUsuarios", "ERROR en registraUsuario: "+e.getMessage());
+            General.log("GestorRestaurante", "ERROR en registraUsuario: "+e.getMessage());
         }
+    }
+    
+    public List<Restaurante> getRestaurantes() {
+        List<Restaurante> lrestaurantes = null;
+        try {
+            String query = "SELECT idRestaurante, nombre, direccion, telefono, latitud, longitud, "
+                         + "username, web, email "
+                         + "FROM RESTAURANTE "
+                         + "ORDER BY nombre ";
+            lrestaurantes = jdbcTemplate.query(query, new RestauranteMapper(), new Object[]{});
+        } catch(Exception e) {
+            General.log("GestorRestaurante", "ERROR en getRestaurantes: "+e.getMessage());
+        }
+        return lrestaurantes;
     }
 }

@@ -92,9 +92,7 @@ public class WebControllerUsuarios extends ControladorFuncionesComunes {
             res = "ok";
         } else {
             res = "nok";
-        }
-        System.out.println(res);
-                
+        }                
         return res;
     } 
 }
