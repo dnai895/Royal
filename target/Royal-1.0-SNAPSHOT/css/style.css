@@ -46,3 +46,31 @@ and open the template in the editor.
 .item {
     margin: 3%;
 }
+
+.btn-circle {
+    border-radius: 21px;
+    font-size: 20px;
+    font-weight: bold;
+    height: 40px;
+    line-height: 1.42;
+    padding: 6px 0;
+    text-align: center;
+    width: 41px;
+}
+
+.info-extra {
+    color:red;
+    font-size: 10px;
+}
+
+.add {
+    background: #7FC11A;
+}
+
+.remove {
+    background: #E85577;
+}
+
+.aligncenter-v {
+    margin-top: 50%;
+}

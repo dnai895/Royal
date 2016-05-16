@@ -11,12 +11,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Perfil restaurante | Class Royal</title>
         <!-- Bootstrap Core CSS -->
-        
+
         <jsp:include page="../css.jsp"/>
     </head>
     <body>
 
-        <jsp:include page="../bloques/menu.jsp"/>
+        <jsp:include page="../bloques/menuRestaurante.jsp"/>
 
         <!-- Page Content -->
         <div class="container panel padding-twice">
@@ -26,12 +26,12 @@
                 <div class="col-lg-12">
                     <h1 class="page-header">Perfil
                     </h1>
-                <!--    <ol class="breadcrumb">
-                        <li><a href="index.html">Home</a>
-                        </li>
-                        <li class="active">Full Width Page</li>
-                    </ol>
-                -->
+                    <!--    <ol class="breadcrumb">
+                            <li><a href="index.html">Home</a>
+                            </li>
+                            <li class="active">Full Width Page</li>
+                        </ol>
+                    -->
                 </div>
             </div>
             <!-- /.row -->
@@ -132,20 +132,20 @@
             <hr>
         </div>
         <script type="text/javascript">
-            $("#submit").click(function() {
+            $("#submit").click(function () {
                 $.ajax({
                     type: "POST",
-                    url: "${contextpath}/restaurante/datos.html", 
+                    url: "${contextpath}/restaurante/datos.html",
                     data: $("#registro").serialize(),
-                    success: function(result){
-                        if(result === "ok") {
+                    success: function (result) {
+                        if (result === "ok") {
                             alert("Datos guardados correctamente");
                             window.location = "${contextpath}/restaurante/home.html";
                         } else if (result === "kopasswd") {
                             alert("Las contraseñas no coinciden. Vuelva a introducirlas y vuelva a intentarlo.");
                         }
                     },
-                    error: function(jqXHR, textStatus, errorThrown) {
+                    error: function (jqXHR, textStatus, errorThrown) {
                         alert("UPS! ha habido un error en el proceso. Vuelva a intentarlo o contacte con el equipo técnico.");
                     }
                 });

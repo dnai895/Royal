@@ -21,6 +21,7 @@ public class Restaurante implements Serializable {
     
     // Datos del comercio
     private String  nombre;
+    private String  nombreUrl;
     private String  direccion;
     private String  telefono;
     private String  web;
@@ -70,6 +71,7 @@ public class Restaurante implements Serializable {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+        setNombreUrl(nombre);
     }
 
     public String getDireccion() {
@@ -154,6 +156,8 @@ public class Restaurante implements Serializable {
         this.setWeb(rest.getWeb());
         this.setLatitud(rest.getLatitud());
         this.setLongitud(rest.getLongitud());
+        this.setDescripcion(rest.getDescripcion());
+        this.setIntro(rest.getIntro());
     }
 
     public String getDescripcion() {
@@ -172,5 +176,27 @@ public class Restaurante implements Serializable {
         this.intro = intro;
     }
     
+    public void setNombreUrl(String nombre) {
+        this.nombreUrl = nombre;
+        this.nombreUrl.replace(" ", "-");
+        this.nombreUrl.replace("á", "a");
+        this.nombreUrl.replace("à", "a");
+        this.nombreUrl.replace("é", "e");
+        this.nombreUrl.replace("è", "e");
+        this.nombreUrl.replace("í", "i");
+        this.nombreUrl.replace("ì", "i");
+        this.nombreUrl.replace("ó", "o");
+        this.nombreUrl.replace("ò", "o");
+        this.nombreUrl.replace("ú", "u");
+        this.nombreUrl.replace("ù", "u");
+        this.nombreUrl.replace("'", "-");
+        this.nombreUrl.replace("\"", "-");
+        this.nombreUrl.replace(".", "");
+        this.nombreUrl.replace(",", "");
+    }
+    
+    public String getNombreUrl() {
+        return this.nombreUrl;
+    }
     
 }

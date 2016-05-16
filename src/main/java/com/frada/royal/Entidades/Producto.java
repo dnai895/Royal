@@ -20,6 +20,7 @@ public class Producto implements Serializable {
     private String  nombre;
     private String  descripcion;
     private String  tipoProducto;
+    private int unidades;
 
     public Producto() {
     }
@@ -78,6 +79,14 @@ public class Producto implements Serializable {
 
     public void setTipoProducto(String tipoProducto) {
         this.tipoProducto = tipoProducto;
+    }
+
+    public int getUnidades() {
+        return unidades;
+    }
+
+    public void setUnidades(int unidades) {
+        this.unidades = unidades;
     }
     
     

@@ -11,7 +11,10 @@ import com.frada.royal.Entidades.Producto;
 import com.frada.royal.Entidades.Restaurante;
 import com.frada.royal.Utilidades.Constantes;
 import com.frada.royal.Utilidades.General;
+import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -75,7 +78,36 @@ public class WebControllerRestaurante extends ControladorFuncionesComunes{
     public ModelAndView viewDataBusqueda( HttpServletRequest request ) {
         ModelAndView result = new ModelAndView("paginasRestaurante/datosBusquedaRestaurante");
         cargaContenidoComun(request, result);
+        result.addObject("restaurante", restaurante);
         return result;
+    } 
+    
+    @ResponseBody
+    @RequestMapping(value="datos-busqueda", method=RequestMethod.POST)
+    public String serviceDataBusqueda( HttpServletRequest request ) {
+        ModelAndView result = new ModelAndView("paginasRestaurante/datosBusquedaRestaurante");
+        cargaContenidoComun(request, result);
+        String respuesta = "nok";
+        if(restaurante.isLogado()) {
+            String descripcion  = getParametroString("descripcion", request);
+            String intro        = getParametroString("intro", request);
+            String latitud      = getParametroString("latitud", request);
+            String longitud     = getParametroString("longitud", request);
+            restaurante.setDescripcion(descripcion);
+            restaurante.setIntro(intro);
+            restaurante.setLongitud(longitud);
+            restaurante.setLatitud(latitud);
+            try {
+                gArchivos.guardaArchivos(request, restaurante.getIdRestaurante());
+            } catch (Exception e) {
+                General.log("WebControllerRestaurante","ERROR al serviceDataBusqueda: "+e.getMessage());
+                e.printStackTrace();
+            }
+            
+            gRestaurante.setDatosBusqueda(restaurante);
+            respuesta = "ok";
+        }
+        return respuesta;
     } 
     
     @RequestMapping(value="home", method=RequestMethod.GET)

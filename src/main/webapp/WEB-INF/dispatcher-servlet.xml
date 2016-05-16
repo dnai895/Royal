@@ -71,6 +71,12 @@
     <bean id="gMesas" class="com.frada.royal.Gestores.GestorMesas" scope="prototype">
         <!-- collaborators and configuration for this bean go here -->
     </bean>
+    
+    <bean id="gArchivos" class="com.frada.royal.Gestores.GestorUploadFiles" scope="prototype">
+        <!-- collaborators and configuration for this bean go here -->
+    </bean>
+    
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
             
     <mvc:resources mapping="/resources/**" location="/resources/" />
  
