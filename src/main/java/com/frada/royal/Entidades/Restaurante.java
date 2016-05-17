@@ -159,6 +159,21 @@ public class Restaurante implements Serializable {
         this.setDescripcion(rest.getDescripcion());
         this.setIntro(rest.getIntro());
     }
+    
+    public void init() {
+        this.setIdRestaurante(0);
+        this.setUsername("");
+        this.setNombre("");
+        this.setEmail("");
+        this.setTelefono("");
+        this.setDireccion("");
+        this.setWeb("");
+        this.setLatitud("");
+        this.setLongitud("");
+        this.setDescripcion("");
+        this.setIntro("");
+        this.setLogado(false);
+    }
 
     public String getDescripcion() {
         return descripcion;

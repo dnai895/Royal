@@ -74,6 +74,17 @@ public class WebControllerUsuarios extends ControladorFuncionesComunes {
     } 
     
     @ResponseBody
+    @RequestMapping(value="logout", method=RequestMethod.GET)
+    public String serviceLogout( HttpServletRequest request ) {
+        ModelAndView result = new ModelAndView("/landing");
+        cargaContenidoComun(request, result);
+        if(restaurante.isLogado()) {
+            restaurante.init();
+        }
+        return "redirect: /classroyal/";
+    } 
+    
+    @ResponseBody
     @RequestMapping(value="landing", method=RequestMethod.POST)
     public String serviceLogin( HttpServletRequest request ) {
         ModelAndView result = new ModelAndView("/landing");

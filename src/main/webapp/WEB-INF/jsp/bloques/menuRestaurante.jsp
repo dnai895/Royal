@@ -63,7 +63,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#">Soporte</a>
+                        <a href="${contextpath}/usuarios/logout.html">Logout</a>
                     </li>
                 </ul>
             </div>
