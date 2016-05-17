@@ -54,6 +54,21 @@ public class GestorMesas {
         return lmesas;
     }
     
+    public List<Mesa> getDisponibiliadMesas(int idRestaurante) {
+        List<Mesa> lmesas = null;
+        try {
+            String query = "SELECT idRestaurante, idMesa, numero, sillas, ocupada, disponibilidad "
+                         + "FROM mesas m "
+                         + "LEFT JOIN DISPONIBILIDAD_MESAS dm ON dm.idMesa = m.idMesa "
+                         + "WHERE idRestaurante = ? AND visible = 1 AND turno = ? AND fecha = ?";
+            General.log("GestorMesa", "getMesas query: "+query+" idRestaurante: "+idRestaurante);
+            lmesas = jdbcTemplate.query(query, new MesasMapper(), new Object[]{idRestaurante});
+        } catch(Exception e) {
+            General.log("GestorMesas", "ERROR en getDisponibiliadMesas: "+e.getMessage());
+        }
+        return lmesas;
+    }
+    
     public void insertaMesa(Mesa mesa) {
         try {
             String query = "INSERT INTO mesas (idRestaurante, numero, sillas, visible) VALUES (?,?,?,1)";

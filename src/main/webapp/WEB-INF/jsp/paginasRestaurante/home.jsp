@@ -24,7 +24,7 @@
 
 <body>
 
-    <jsp:include page="../bloques/menu.jsp"/>
+    <jsp:include page="../bloques/menuRestaurante.jsp"/>
 
     <!-- Page Content -->
     <div class="container">

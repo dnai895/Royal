@@ -19,6 +19,8 @@ public class Mesa implements Serializable{
     private int idMesa;
     private int numero;
     private int sillas;
+    private int disponibilidad;
+    private String fecha;
 
     public Mesa() {
     }
@@ -53,6 +55,22 @@ public class Mesa implements Serializable{
 
     public void setSillas(int sillas) {
         this.sillas = sillas;
+    }
+
+    public int getDisponibilidad() {
+        return disponibilidad;
+    }
+
+    public void setDisponibilidad(int disponibilidad) {
+        this.disponibilidad = disponibilidad;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
     
     

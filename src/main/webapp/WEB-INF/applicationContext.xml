@@ -13,4 +13,8 @@
         <aop:scoped-proxy/>
     </bean>
     
+    <bean id="carrito" class="com.frada.royal.Entidades.Carrito" scope="session">
+        <aop:scoped-proxy/>
+    </bean>
+    
 </beans>

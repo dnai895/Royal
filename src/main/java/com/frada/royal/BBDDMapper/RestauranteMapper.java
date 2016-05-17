@@ -28,7 +28,8 @@ public class RestauranteMapper implements RowMapper{
         rest.setLongitud(rs.getString("longitud"));
         rest.setUsername(rs.getString("username"));
         rest.setWeb(rs.getString("web"));
-        
+        rest.setDescripcion(rs.getString("descripcion"));
+        rest.setIntro(rs.getString("intro"));
         return rest;
     }
     

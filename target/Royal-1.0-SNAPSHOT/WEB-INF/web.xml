@@ -36,8 +36,7 @@
         <servlet-name>dispatcher</servlet-name> 
         <url-pattern>*.html</url-pattern>
     </servlet-mapping>
-    
-    <!--  <session-config>
+        <!--  <session-config>
         <session-timeout>
             30
         </session-timeout>

@@ -14,13 +14,16 @@
         <jsp:include page="../css.jsp"/>
     </head>
     <body><!-- Page Content -->
-        <jsp:include page="../bloques/menu.jsp"/>
+        <jsp:include page="../bloques/menuRestaurante.jsp"/>
         <div class="container">
 
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-10">
                     <h1 class="page-header">Mesas
                     </h1>
+                </div>
+                <div class="col-lg-2">
+                    <a href="${contextpath}/restaurante/mesa.html" class="btn btn-default btn-circle page-header add">+</a>
                 </div>
             </div>
             <div class="row">

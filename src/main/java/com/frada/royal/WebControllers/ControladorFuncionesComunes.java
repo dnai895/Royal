@@ -6,9 +6,11 @@
 package com.frada.royal.WebControllers;
 
 
+import com.frada.royal.Entidades.Carrito;
 import com.frada.royal.Entidades.Restaurante;
 import com.frada.royal.Gestores.GestorMesas;
 import com.frada.royal.Gestores.GestorRestaurante;
+import com.frada.royal.Gestores.GestorUploadFiles;
 import com.frada.royal.Gestores.GestorUsuarios;
 import com.frada.royal.Utilidades.Constantes;
 import javax.servlet.http.HttpServletRequest;
@@ -29,6 +31,9 @@ public class ControladorFuncionesComunes {
     protected Restaurante restaurante;
     
     @Autowired
+    protected Carrito carrito;
+    
+    @Autowired
     protected GestorUsuarios gUsuarios;
     
     @Autowired
@@ -36,6 +41,9 @@ public class ControladorFuncionesComunes {
     
     @Autowired
     protected GestorMesas gMesas;
+    
+    @Autowired
+    protected GestorUploadFiles gArchivos;
     
     public void cargaContenidoComun(HttpServletRequest request, ModelAndView view) {
         view.addObject("restaurante", restaurante);
