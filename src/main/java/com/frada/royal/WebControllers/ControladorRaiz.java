@@ -29,6 +29,13 @@ public class ControladorRaiz extends ControladorFuncionesComunes {
         return result;
     } 
     
+    @RequestMapping(value="error", method=RequestMethod.GET)
+    public ModelAndView error( HttpServletRequest request ) {
+        ModelAndView result = new ModelAndView("error");       
+        cargaContenidoComun(request, result);
+        return result;
+    }     
+    
     @RequestMapping(value="landing", method=RequestMethod.GET)
     public ModelAndView landing( HttpServletRequest request ) {
         ModelAndView result = new ModelAndView("landing");

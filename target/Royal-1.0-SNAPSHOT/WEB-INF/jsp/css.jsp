@@ -10,6 +10,9 @@
 <!-- Custom CSS -->
 <link href="${contextpath}/css/modern-business.css" rel="stylesheet">
 <link href="${contextpath}/css/style.css" rel="stylesheet">
+<link href="${contextpath}/css/font-awesome.min.css" rel="stylesheet">
 
 <!-- jQuery -->
 <script src="${contextpath}/scripts/jquery.js"></script>
+
+<!-- Fonts -->

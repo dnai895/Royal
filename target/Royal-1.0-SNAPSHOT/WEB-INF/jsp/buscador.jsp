@@ -11,11 +11,11 @@
 
     <title>Class Royal</title>
 
-<%--    <!-- Bootstrap Core CSS -->
+    <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="${contextpaht}css/agency.css" rel="stylesheet">
+    <link href="css/agency.css" rel="stylesheet">
     <link href="css/custom_landing.css" rel="stylesheet">    
 
     <!-- Custom Fonts -->
@@ -31,7 +31,6 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
---%>
     <jsp:include page="css.jsp"/>
     <!-- JS file -->
     <script src="${contextpath}/scripts/jquery.easy-autocomplete.min.js"></script> 
@@ -42,58 +41,36 @@
     <!-- Additional CSS Themes file - not required-->
     <link rel="stylesheet" href="${contextpath}/css/easy-autocomplete.themes.min.css"> 
 
+    <link rel="stylesheet" href="${contextpath}/css/custom_landing.css">    
+    <link rel="stylesheet" href="${contextpath}/css/buscador.css">       
+    <link rel="stylesheet" href="${contextpath}/css/custom_landing.css">    
 </head>
 
 <body id="page-top" class="index">
     <!-- Header -->
     <header>
         <div class="container">
-            <div class="intro-text">
-                <div class="intro-lead-in">Bienvenid@ a <!--Class Royal--><img alt="logo" src="${contextpath}/img/logo.png" style="margin: -82px 0 0 -12px"/></div>
-                <input id="search" />
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="well">
+                        <h1 class="page-header">Encuentra tu restaurante</h1>
+                    </div>
+                </div>
+            </div>            
+        </div>            
+        <div class="row">
+            <div class="input-group">
+                <input type="text" id="search">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                </span>
             </div>
         </div>
     </header>
         
     <jsp:include page="scripts.jsp"/>
     
-   <script type="text/javascript">
-   /*
-        $("#submitRest").click(function() {
-            $.ajax({
-                type: "POST",
-                url: "${contextpath}/usuarios/landing.html", 
-                data: $("#login").serialize(),
-                success: function(result){
-                    if(result === "ok") {
-                        window.location = "${contextpath}/restaurante/home.html";
-                    } else {
-                        alert("¡Datos incorrectos!");
-                    }
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    alert("UPS! ha habido un error en el proceso. Vuelva a intentarlo o contacte con el equipo técnico.");
-                }
-            });
-        });
-        $("#submitUser").click(function() {
-            $.ajax({
-                type: "POST",
-                url: "${contextpath}/usuarios/landing.html", 
-                data: $("#loginUser").serialize(),
-                success: function(result){
-                    if(result === "ok") {
-                        window.location = "${contextpath}/user/home.html";
-                    } else {
-                        alert("¡Datos incorrectos!");
-                    }
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    alert("UPS! ha habido un error en el proceso. Vuelva a intentarlo o contacte con el equipo técnico.");
-                }
-            });
-        });*/
-    
+   <script type="text/javascript">    
     var options = {
             data: [ 
                 {"name": "Afghanistan"}, 
