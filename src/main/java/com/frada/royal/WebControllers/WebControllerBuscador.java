@@ -6,6 +6,7 @@
 package com.frada.royal.WebControllers;
 
 import com.frada.royal.Entidades.Restaurante;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +26,8 @@ public class WebControllerBuscador extends ControladorFuncionesComunes {
     public ModelAndView viewRegistro( HttpServletRequest request ) {
         ModelAndView result = new ModelAndView("buscador");
         cargaContenidoComun(request, result);
-
+        List<Restaurante> lrestaurantes = gRestaurante.getRestaurantes();
+        result.addObject("lrestaurantes", lrestaurantes);
         return result;
     } 
 }

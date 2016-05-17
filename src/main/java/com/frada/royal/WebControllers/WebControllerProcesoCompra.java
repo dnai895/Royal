@@ -27,16 +27,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/*")
 public class WebControllerProcesoCompra extends ControladorFuncionesComunes {
-    
-    @RequestMapping(value="buscador", method=RequestMethod.GET)
-    public ModelAndView viewBuscador( HttpServletRequest request ) {
-        ModelAndView result = new ModelAndView("index");
-        cargaContenidoComun(request, result);
-        List<Restaurante> lrestaurantes = gRestaurante.getRestaurantes();
-        result.addObject("lrestaurantes", lrestaurantes);
-        return result;
-    } 
-    
+
     @RequestMapping(value="{idRestaurante}/{nombre}/home", method=RequestMethod.GET)
     public ModelAndView viewHomeRestaurante(@PathVariable int idRestaurante, @PathVariable String nombre, HttpServletRequest request ) {
         ModelAndView result = new ModelAndView("paginasClientes/homeRestaurante");
