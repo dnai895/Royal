@@ -12,11 +12,11 @@
     <title>Class Royal</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="${contextpath}/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/agency.css" rel="stylesheet">
-    <link href="css/custom_landing.css" rel="stylesheet">    
+    <link href="${contextpath}css/agency.css" rel="stylesheet">
+    <link href="${contextpath}css/custom_landing.css" rel="stylesheet">    
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -60,13 +60,37 @@
         </div>            
         <div class="row">
             <div class="input-group">
-                <input type="text" id="search">
+                <input type="text" id="search" placeholder="Busca tu restaurante...">
                 <span class="input-group-btn">
                     <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
                 </span>
             </div>
         </div>
+        <div class="row">
+            <button class="btn-info btn-lg xtra-large" type="button" data-toggle="modal" data-target="#rests">Ver todos los restaurantes</button>
+        </div>        
     </header>
+    <div id="rests" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Todos los restaurantes</h4>
+          </div>
+          <div class="modal-body">
+              <div class="row">
+                <span>nombre restaurante</span>
+                <img src="" />            
+                <hr>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+    </div>
+    </div>
         
     <jsp:include page="scripts.jsp"/>
     
