@@ -62,11 +62,11 @@ public class GestorUsuarios {
                 
         try {
             String query = "UPDATE restaurante SET nombre = ?, direccion = ?, telefono = ?, username = ?, "
-                    + f1passwd+" web = ?, email = ? "
+                    + f1passwd+" web = ?, email = ?, aforo  = ? "
                     + "WHERE idRestaurante = ?";
             jdbcTemplate.update(query, new Object[]{restaurante.getNombre(), restaurante.getDireccion(), restaurante.getTelefono(),
             restaurante.getUsername(), restaurante.getWeb(), 
-            restaurante.getEmail(), restaurante.getIdRestaurante()});
+            restaurante.getEmail(), restaurante.getAforo(), restaurante.getIdRestaurante()});
         } catch(Exception e) {
             General.log("GestorUsuarios", "ERROR en registraUsuario: "+e.getMessage());
         }

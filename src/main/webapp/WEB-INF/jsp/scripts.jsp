@@ -8,3 +8,4 @@
 
 <!-- Bootstrap Core JavaScript -->
 <script src="${contextpath}/scripts/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>

@@ -81,4 +81,8 @@ public class ControladorFuncionesComunes {
         }
         return param;
     }
+    
+    public void muestraPaginaError(ModelAndView result) {
+        result.setViewName("error");
+    }
 }

@@ -31,8 +31,7 @@
                     <div class="col-md-3 col-sm-6">
                         <div class="panel panel-default text-center">
                             <div class="panel-body">
-                                <h4>Mesa ${current.getNumero()}</h4>
-                                <p>Capacidad: ${current.getSillas()}</p>
+                                <h4>#${current.getNumero()}</h4>
                                 <a class="btn btn-primary" href="${contextpath}/restaurante/${current.getIdMesa()}/mesa.html">Editar</a>
                             </div>
                         </div>

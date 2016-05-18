@@ -82,6 +82,16 @@
                             <div class="col-lg-6">
                                 <div class="control-group form-group">
                                     <div class="controls">
+                                        <label>Aforo total del local:</label>
+                                        <input class="form-control" id="aforo" name="aforo" value="${restaurante.getAforo()}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="control-group form-group">
+                                    <div class="controls">
                                         <label>Web:</label>
                                         <input class="form-control" id="web" name="web" value="${restaurante.getWeb()}"/>
                                     </div>

@@ -31,7 +31,7 @@ public class GestorRestaurante {
         List<Restaurante> lrest = null;
         try {
             String query = "SELECT idRestaurante, nombre, direccion, telefono, latitud, longitud, "
-                    + "username, web, email, intro, descripcion "
+                    + "username, web, email, intro, descripcion, aforo "
                     + "FROM restaurante "
                     + "WHERE username = ? "
                     + "LIMIT 1";
@@ -50,7 +50,7 @@ public class GestorRestaurante {
         List<Restaurante> lrest = null;
         try {
             String query = "SELECT idRestaurante, nombre, direccion, telefono, latitud, longitud, "
-                    + "username, web, email, intro, descripcion "
+                    + "username, web, email, intro, descripcion, aforo "
                     + "FROM restaurante "
                     + "WHERE idRestaurante = ? "
                     + "LIMIT 1";
@@ -150,7 +150,7 @@ public class GestorRestaurante {
         List<Restaurante> lrestaurantes = null;
         try {
             String query = "SELECT idRestaurante, nombre, direccion, telefono, latitud, longitud, "
-                         + "username, web, email, intro, descripcion "
+                         + "username, web, email, intro, descripcion, aforo "
                          + "FROM RESTAURANTE "
                          + "ORDER BY nombre ";
             lrestaurantes = jdbcTemplate.query(query, new RestauranteMapper(), new Object[]{});

@@ -12,10 +12,10 @@
     <title>Error - Class Royal</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="${contextpath}/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/modern-business.css" rel="stylesheet">
+    <link href="${contextpath}/css/modern-business.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -38,7 +38,7 @@
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <a class="navbar-brand" href="index.html">Class Royal</a>
+                <a class="navbar-brand" href="${contextpath}">Class Royal</a>
             </div>
         </div>
         <!-- /.container -->
@@ -65,11 +65,8 @@
                     </h1>
                     <br />
                     <p>Parece que ha ocurrido un error al procesar tu petición... Por favor, vuelve a intentarlo.</p>
-                    <ul>
-                        <li>
-                            <a href="index.html">Inicio</a>
-                        </li>
-                    </ul>
+                    <hr>
+                    <a href="${contextpath}">Volver a inicio</a>
                 </div>
             </div>
 
@@ -90,10 +87,10 @@
     <!-- /.container -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="${contextpath}/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="${contextpath}/js/bootstrap.min.js"></script>
 
 </body>
 

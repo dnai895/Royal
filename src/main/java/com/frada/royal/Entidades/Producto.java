@@ -20,7 +20,7 @@ public class Producto implements Serializable {
     private String  nombre;
     private String  descripcion;
     private String  tipoProducto;
-    private int unidades;
+    private int     unidades;
 
     public Producto() {
     }
@@ -39,6 +39,10 @@ public class Producto implements Serializable {
 
     public void setPrecio(double precio) {
         this.precio = precio;
+    }
+    
+    public double getPrecioTotal() {
+        return this.precio * this.unidades;
     }
 
     public String getNombre() {

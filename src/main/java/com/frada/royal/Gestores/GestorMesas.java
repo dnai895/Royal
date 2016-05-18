@@ -26,7 +26,7 @@ public class GestorMesas {
     public Mesa getMesa(int idMesa, int idRestaurante) {
         List<Mesa> lmesas = null;
         try {
-            String query = "SELECT idRestaurante, idMesa, numero, sillas "
+            String query = "SELECT idRestaurante, idMesa, numero "
                     + "FROM mesas "
                     + "WHERE idMesa = ? AND idRestaurante = ? AND visible = 1 ";
             lmesas = jdbcTemplate.query(query, new MesasMapper(), new Object[]{idMesa, idRestaurante});
@@ -43,7 +43,7 @@ public class GestorMesas {
     public List<Mesa> getMesas(int idRestaurante) {
         List<Mesa> lmesas = null;
         try {
-            String query = "SELECT idRestaurante, idMesa, numero, sillas "
+            String query = "SELECT idRestaurante, idMesa, numero "
                          + "FROM mesas "
                          + "WHERE idRestaurante = ? AND visible = 1 ";
             General.log("GestorMesa", "getMesas query: "+query+" idRestaurante: "+idRestaurante);
@@ -57,7 +57,7 @@ public class GestorMesas {
     public List<Mesa> getDisponibiliadMesas(int idRestaurante) {
         List<Mesa> lmesas = null;
         try {
-            String query = "SELECT idRestaurante, idMesa, numero, sillas, ocupada, disponibilidad "
+            String query = "SELECT idRestaurante, idMesa, numero, ocupada, disponibilidad "
                          + "FROM mesas m "
                          + "LEFT JOIN DISPONIBILIDAD_MESAS dm ON dm.idMesa = m.idMesa "
                          + "WHERE idRestaurante = ? AND visible = 1 AND turno = ? AND fecha = ?";
@@ -71,8 +71,8 @@ public class GestorMesas {
     
     public void insertaMesa(Mesa mesa) {
         try {
-            String query = "INSERT INTO mesas (idRestaurante, numero, sillas, visible) VALUES (?,?,?,1)";
-            jdbcTemplate.update(query, new Object[]{mesa.getIdRestaurante(), mesa.getNumero(), mesa.getSillas()});
+            String query = "INSERT INTO mesas (idRestaurante, numero, visible) VALUES (?,?,1)";
+            jdbcTemplate.update(query, new Object[]{mesa.getIdRestaurante(), mesa.getNumero()});
         } catch(Exception e) {
             General.log("GestorMesas", "ERROR en insertaMesa: "+e.getMessage());
         }
@@ -80,8 +80,8 @@ public class GestorMesas {
     
     public void modificaMesa(Mesa mesa) {
         try {
-            String query = "UPDATE mesas SET numero = ?, sillas = ? WHERE idMesa = ? AND idRestaurante = ?";
-            jdbcTemplate.update(query, new Object[]{mesa.getNumero(), mesa.getSillas(), 
+            String query = "UPDATE mesas SET numero = ? WHERE idMesa = ? AND idRestaurante = ?";
+            jdbcTemplate.update(query, new Object[]{mesa.getNumero(),
                                                     mesa.getIdMesa(), mesa.getIdRestaurante()});
         } catch(Exception e) {
             General.log("GestorMesas", "ERROR en insertaMesa: "+e.getMessage());

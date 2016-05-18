@@ -26,6 +26,7 @@ public class Restaurante implements Serializable {
     private String  telefono;
     private String  web;
     private String  email;
+    private int     aforo;
     
     private String  descripcion;
     private String  intro;
@@ -158,6 +159,7 @@ public class Restaurante implements Serializable {
         this.setLongitud(rest.getLongitud());
         this.setDescripcion(rest.getDescripcion());
         this.setIntro(rest.getIntro());
+        this.setAforo(rest.getAforo());
     }
     
     public void init() {
@@ -172,6 +174,7 @@ public class Restaurante implements Serializable {
         this.setLongitud("");
         this.setDescripcion("");
         this.setIntro("");
+        this.setAforo(0);
         this.setLogado(false);
     }
 
@@ -213,5 +216,14 @@ public class Restaurante implements Serializable {
     public String getNombreUrl() {
         return this.nombreUrl;
     }
+
+    public int getAforo() {
+        return aforo;
+    }
+
+    public void setAforo(int aforo) {
+        this.aforo = aforo;
+    }
+    
     
 }

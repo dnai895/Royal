@@ -79,6 +79,8 @@ public class WebControllerUsuarios extends ControladorFuncionesComunes {
         cargaContenidoComun(request, result);
         if(restaurante.isLogado()) {
             restaurante.init();
+        } else {
+            muestraPaginaError(result);
         }
         return "redirect:/";
     } 

@@ -35,7 +35,7 @@
             <c:forEach items="${carrito.getLproductos()}" var="current"> 
                 <div class="row" id="producto${current.getIdProducto()}">
                     <!-- Blog Post Row -->
-                    <div class="col-lg-10">
+                    <div class="col-lg-6">
                         <div class="row item">
                             <div class="col-md-5">
                                 <img class="img-responsive img-hover" src="http://placehold.it/600x300" alt="">
@@ -51,7 +51,24 @@
                         </div>
                     </div>
                     <div class="col-lg-2">
-                        <a class="btn btn-default btn-circle aligncenter-v delete" producto="${current.getIdProducto()}">X</a>
+                        <div class="row item">
+                            <div class="col-md-12">
+                                <div class="totalprice">
+                                    ${current.getPrecioTotal()}€
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-2">
+                        <div class="row item">
+                            <div class="col-md-12">
+                                <div class="aligncenter-v">
+                                    <a class="btn btn-default btn-circle delete" producto="${current.getIdProducto()}">X</a>
+                                </div>
+                            </div>
+                            
+                        </div>
                     </div>
                 </div>
             </c:forEach>

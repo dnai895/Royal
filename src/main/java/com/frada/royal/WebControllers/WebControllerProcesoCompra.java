@@ -45,9 +45,9 @@ public class WebControllerProcesoCompra extends ControladorFuncionesComunes {
         return result;
     } 
     
-    @RequestMapping(value="{idRestaurante}/{nombre}/disponibilidad-mesas", method=RequestMethod.GET)
+    @RequestMapping(value="{idRestaurante}/{nombre}/reserva", method=RequestMethod.GET)
     public ModelAndView disponibilidadMesas( @PathVariable int idRestaurante, @PathVariable String nombre, HttpServletRequest request ) {
-        ModelAndView result = new ModelAndView("paginasClientes/añadirCarrito");
+        ModelAndView result = new ModelAndView("paginasClientes/reserva");
         cargaContenidoComun(request, result);
         List<Mesa> lmesas = gMesas.getMesas(idRestaurante);
         result.addObject("lmesas", lmesas);

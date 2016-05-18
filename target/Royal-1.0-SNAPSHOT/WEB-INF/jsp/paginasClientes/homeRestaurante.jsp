@@ -97,9 +97,9 @@
 
                     <div class="row">
                         <!--  <input type="button" class="btn btn-success allw" value="Pedir"/> -->
-                        <a href="${contextpath}/${rest.getIdRestaurante()}/${rest.getNombreUrl()}/platos.html">
+                        <a href="${contextpath}/${rest.getIdRestaurante()}/${rest.getNombreUrl()}/reserva.html">
                             <div class="aref">
-                                Pedir
+                                Reservar
                             </div>
                         </a>
                     </div>
@@ -190,9 +190,9 @@
                 <!--  <input type="button" class="btn btn-success allw" value="Pedir"/> -->
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
-                    <a href="${contextpath}/${rest.getIdRestaurante()}/${rest.getNombreUrl()}/platos.html">
+                    <a href="${contextpath}/${rest.getIdRestaurante()}/${rest.getNombreUrl()}/reserva.html">
                         <div class="aref">
-                            Pedir
+                            Reservar
                         </div>
                     </a>
                 </div>

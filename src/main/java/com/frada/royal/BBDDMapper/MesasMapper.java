@@ -22,7 +22,6 @@ public class MesasMapper implements RowMapper {
         mesa.setIdRestaurante(rs.getInt("idRestaurante"));
         mesa.setIdMesa(rs.getInt("idMesa"));
         mesa.setNumero(rs.getInt("numero"));
-        mesa.setSillas(rs.getInt("sillas"));
         return mesa;
     }
     

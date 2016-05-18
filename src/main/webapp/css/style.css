@@ -71,5 +71,11 @@ and open the template in the editor.
 }
 
 .aligncenter-v {
+    margin-top: 41%;
+}
+
+.totalprice {
     margin-top: 50%;
+    font-size: 16px;
+    font-weight: bold;
 }
