@@ -7,7 +7,21 @@
     height: 60px;
     font-size: 28px;
     text-align: center;
-    background-color: #f4c5cd;
+    background-color: #f4d7f3;
+}
+
+.xtra-large{
+    width: 20%;
+    margin-top: 130px;
+    background-color: #a3c081;
+}
+
+#rests{
+    overflow: scroll;
+}
+
+.modal-body{
+    text-align: center;
 }
 
 .input-group{
@@ -24,7 +38,7 @@ body{
 }
 
 .container{
-    margin-bottom: 80px;
+    margin-bottom: 40px;
 }
 
 header{
@@ -35,4 +49,8 @@ header{
     height: 60px;
     width: 60px;
     font-size: 24px;
+}
+
+.row{
+   
 }
