@@ -20,11 +20,19 @@ and open the template in the editor.
 .fright {
     float: right;
 }
-
+/*
 .panel {
-    background: #F0F0F0;
+    background: #FFEAFF;
 }
-
+rosa */
+/*
+.panel {
+    background: #EAFFF0;
+}
+*/
+.panel {
+    background: #FAF0D1;
+}
 .container {
     width: 910px;
 }
@@ -78,4 +86,13 @@ and open the template in the editor.
     margin-top: 50%;
     font-size: 16px;
     font-weight: bold;
+}
+
+.navbar-brand, .navbar-inverse .navbar-nav > li > a {
+    color: white !important;
+}
+
+.navbar-inverse {
+    background-color: #5c5c5c;
+    border-color: #080808;
 }

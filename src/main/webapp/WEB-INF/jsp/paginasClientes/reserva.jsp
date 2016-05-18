@@ -27,7 +27,7 @@
 
     <body>
 
-        <jsp:include page="../bloques/menuRestaurante.jsp"/>
+        <jsp:include page="../bloques/menuCliente.jsp" />
 
         <!-- Page Content -->
         <div class="container panel padding-twice">
@@ -63,31 +63,40 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>                
+                        </div>           
+                        
+                        <!-- Text input-->
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="control-group form-group">
-                                        <div class="input-group date" data-provide="datepicker">
-                                            <input id="fecha" name="fecha" type="text" class="form-control " value="01/06/2012">
-                                            <div class="input-group-addon">
-                                                <span class="glyphicon glyphicon-th"></span>
-                                            </div>
-                                        </div>
+                                    <div class="controls">
+                                        <label>Turno:</label>
+                                        <select class="form-control" id="turno" name="turno">
+                                            <option value="1">Comida</option>
+                                            <option value="2">Cena</option>
+                                        </select> 
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- Text input-->
-                        <%--       <div class="row">
-                                   <div class="col-lg-12">
-                                       <div class="control-group form-group">
-                                           <div class="controls">
-                                               <label>Sillas</label>
-                                               <input id="sillas" name="sillas" class="form-control input-md" type="number" value="${mesa.getSillas()}">
-                                           </div>
-                                       </div>
-                                   </div>
-                               </div>
-                        --%>       
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="control-group form-group">
+                                    <%--        <div class="input-group date" data-provide="datepicker">
+                                                <input id="fecha" name="fecha" type="text" class="form-control " data-date-format="YYYY-MM-DD">
+                                                <div class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-th"></span>
+                                                </div>
+                                            </div>
+                                    --%>
+                                    <div class="input-append date" id="dp3" data-date="18-05-2016" data-date-format="dd/mm/yyyy">
+                                        <label>Día:</label>
+                                        <input class="form-control span2" size="16" type="text" value="18/05/2016">
+                                        <span class="add-on"><i class="icon-th"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-lg-8">
                             </div>
@@ -110,13 +119,10 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#fecha').datepicker({
-            language: "es",
-            dateFormat: 'dd/mm/yy'
+          $(".span2").datepicker({
+         format: 'dd/mm/yyyy'
+         });
         });
-            
-        });
-        
         $("#submit").click(function() {
         $.ajax({
         type: "POST",
