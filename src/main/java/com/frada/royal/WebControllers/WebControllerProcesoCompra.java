@@ -5,6 +5,7 @@
  */
 package com.frada.royal.WebControllers;
 
+import com.frada.royal.Entidades.Carrito;
 import com.frada.royal.Entidades.Mesa;
 import com.frada.royal.Entidades.Producto;
 import com.frada.royal.Entidades.Restaurante;
@@ -83,7 +84,7 @@ public class WebControllerProcesoCompra extends ControladorFuncionesComunes {
             carrito.setTurno(turno);
             carrito.setNombre(nombreC);
             carrito.setApellidos(apellidos);
-            carrito.setIdDisponibilidad(gRestaurante.getIdDisponibillidad(aleatorio));
+            carrito.setIdComanda(gRestaurante.getIdComanda(aleatorio));
             response = "ok";
         } else {
             response = "nok";
@@ -124,6 +125,7 @@ public class WebControllerProcesoCompra extends ControladorFuncionesComunes {
             unidades = getParametroInt("inputUnidades"+idProducto, request);
             p = gRestaurante.getProducto(Integer.parseInt(idProducto));
             p.setUnidades(unidades);
+            p.setIdRestaurante(idRestaurante);
             lproductos.add(p);
         }
         carrito.setLproductos(lproductos);
@@ -139,6 +141,20 @@ public class WebControllerProcesoCompra extends ControladorFuncionesComunes {
         result.addObject("carrito", carrito);
         result.addObject("idRestaurante", idRestaurante);
         return result;
+    } 
+    
+    @ResponseBody
+    @RequestMapping(value="{idRestaurante}/carrito", method=RequestMethod.POST)
+    public String guardarComanda( @PathVariable int idRestaurante, HttpServletRequest request ) {
+        ModelAndView result = new ModelAndView("paginasClientes/carrito");
+        cargaContenidoComun(request, result);
+        String response = "nok";
+        for (Producto producto : carrito.getLproductos()) {
+            gRestaurante.guardaProducto(producto);
+            response = "ok";
+        }
+        gRestaurante.guardaDineroTotalCarrito(carrito);
+        return response;
     } 
     
     @ResponseBody

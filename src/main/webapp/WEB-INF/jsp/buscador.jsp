@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,8 +44,16 @@
     <link rel="stylesheet" href="${contextpath}/css/easy-autocomplete.themes.min.css"> 
 
     <link rel="stylesheet" href="${contextpath}/css/custom_landing.css">    
-    <link rel="stylesheet" href="${contextpath}/css/buscador.css">       
-    <link rel="stylesheet" href="${contextpath}/css/custom_landing.css">    
+    <link rel="stylesheet" href="${contextpath}/css/buscador.css">    
+    <style>
+        a {
+            margin: auto;
+            padding: 0;
+            background-color: transparent !important;
+            color: #5A91CB;
+            border: none !important;
+        }
+    </style>
 </head>
 
 <body id="page-top" class="index">
@@ -62,7 +72,7 @@
             <div class="input-group">
                 <input type="text" id="search" placeholder="Busca tu restaurante...">
                 <span class="input-group-btn">
-                    <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                    <button class="btn btn-default" type="button" id="btn-buscar"><i class="fa fa-search"></i></button>
                 </span>
             </div>
         </div>
@@ -79,11 +89,17 @@
             <h4 class="modal-title">Todos los restaurantes</h4>
           </div>
           <div class="modal-body">
-              <div class="row">
-                <span>nombre restaurante</span>
-                <img src="" />            
-                <hr>
-              </div>
+              <c:forEach items="${lrestaurantes}" var="current">
+                  <div class="row">
+                      <div class="col-lg-3"></div>
+                      <div class="col-lg-9 text-left">
+                          <p><a href="${contextpath}/${current.getIdRestaurante()}/${current.getNombreUrl()}/home.html">${current.getNombre()}</a></p>
+                      </div>
+                    
+                <!--    <img src="" />         -->    
+                    <hr>
+                  </div>
+              </c:forEach>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn" data-dismiss="modal">Cerrar</button>
@@ -94,27 +110,36 @@
         
     <jsp:include page="scripts.jsp"/>
     
-   <script type="text/javascript">    
+<script type="text/javascript">    
     var options = {
-            data: [ 
-                {"name": "Afghanistan"}, 
-                {"name": "Aland Islands"}, 
-                {"name": "Albania"}, 
-                {"name": "Algeria"}, 
-                {"name": "American Samoa"} 
-            ],
-
-            getValue: "name",
-
-            list: {
-                    match: {
-                            enabled: true
-                    }
+        data: [ 
+            <c:forEach items="${lrestaurantes}" var="current">
+                {"name": "${current.getNombre()}", "id":"${current.getIdRestaurante()}", "nombreUrl": "${current.getNombreUrl()}", "website-link":"${contextpath}/${current.getIdRestaurante()}/${current.getNombreUrl()}/home.html" }, 
+            </c:forEach>
+        ],
+        getValue: "name",
+        template: {
+            type: "links",
+            fields: {
+                link: "website-link"
             }
+        },
+        list: {
+            match: {
+                enabled: true
+            }
+        }
     };
 
     $("#search").easyAutocomplete(options);
-    </script>
+    
+    $("#btn-buscar").click(function() {
+        var item = $("#search").getSelectedItemData();
+        console.info(item);
+        console.info("name: "+item["name"]);
+        window.location = "${contextpath}/"+item["id"]+"/"+item["nombreUrl"]+"/home.html";
+    });
+</script>
 
 </body>
 

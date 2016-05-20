@@ -24,7 +24,7 @@ public class Carrito implements Serializable {
     private Mesa mesa;
     private String nombre;
     private String apellidos;
-    private int idDisponibilidad;
+    private int idComanda;
 
     public int getIdMesa() {
         return idMesa;
@@ -106,13 +106,19 @@ public class Carrito implements Serializable {
         this.apellidos = apellidos;
     }
 
-    public int getIdDisponibilidad() {
-        return idDisponibilidad;
+    public int getIdComanda() {
+        return idComanda;
     }
 
-    public void setIdDisponibilidad(int idDisponibilidad) {
-        this.idDisponibilidad = idDisponibilidad;
+    public void setIdComanda(int idDisponibilidad) {
+        this.idComanda = idDisponibilidad;
     }
     
-    
+    public double getDineroTotal() {
+        double dineroTotal = 0;
+        for(Producto producto : lproductos) {
+            dineroTotal = dineroTotal + producto.getPrecioTotal();
+        }
+        return dineroTotal;
+    }
 }

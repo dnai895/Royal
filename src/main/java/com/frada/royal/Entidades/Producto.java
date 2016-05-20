@@ -13,6 +13,7 @@ import java.io.Serializable;
  */
 public class Producto implements Serializable {
     
+    private int     idComanda;
     private int     idRestaurante;
     private int     idProducto;    
     private int     idTipoProducto;
@@ -91,6 +92,14 @@ public class Producto implements Serializable {
 
     public void setUnidades(int unidades) {
         this.unidades = unidades;
+    }
+
+    public int getIdComanda() {
+        return idComanda;
+    }
+
+    public void setIdComanda(int idComanda) {
+        this.idComanda = idComanda;
     }
     
     
