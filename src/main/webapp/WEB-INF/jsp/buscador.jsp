@@ -17,8 +17,8 @@
     <link href="${contextpath}/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="${contextpath}css/agency.css" rel="stylesheet">
-    <link href="${contextpath}css/custom_landing.css" rel="stylesheet">    
+    <link href="${contextpath}/css/agency.css" rel="stylesheet">
+    <link href="${contextpath}/css/custom_landing.css" rel="stylesheet">    
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
