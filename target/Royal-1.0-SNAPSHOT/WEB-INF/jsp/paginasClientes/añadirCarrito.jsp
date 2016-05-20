@@ -180,21 +180,25 @@
                     }
                     
                     $("#submit").click(function() {
-                        $.ajax({
-                            type: "POST",
-                            url: "${contextpath}/${idRestaurante}/carrito/add.html",
-                            data: $("#platos").serialize(),
-                            success: function(result){
-                                if (result === "ok") {
-                                window.location = "${contextpath}/${idRestaurante}/carrito.html";
-                                } else {
-                                alert("¡Datos incorrectos!");
+                        if(producto != 0 && unidades != 0) {
+                            $.ajax({
+                                type: "POST",
+                                url: "${contextpath}/${idRestaurante}/carrito/add.html",
+                                data: $("#platos").serialize(),
+                                success: function(result){
+                                    if (result === "ok") {
+                                    window.location = "${contextpath}/${idRestaurante}/carrito.html";
+                                    } else {
+                                    alert("¡Datos incorrectos!");
+                                    }
+                                },
+                                error: function(jqXHR, textStatus, errorThrown) {
+                                    alert("UPS! ha habido un error en el proceso. Vuelva a intentarlo o contacte con el equipo técnico.");
                                 }
-                            },
-                            error: function(jqXHR, textStatus, errorThrown) {
-                                alert("UPS! ha habido un error en el proceso. Vuelva a intentarlo o contacte con el equipo técnico.");
-                            }
-                        });
+                            });
+                        } else {
+                            alert("¡Tienes que seleccionar algún producto!");
+                        }
                     });
                 });
             </script>

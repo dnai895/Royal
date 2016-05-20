@@ -51,7 +51,7 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <form id="mesa" name="mesa" action="#">
+                    <form id="reserva" name="reserva" action="#">
 
                         <!-- Text input-->
                         <div class="row">
@@ -91,12 +91,36 @@
                                     --%>
                                     <div class="input-append date" id="dp3" data-date="18-05-2016" data-date-format="dd/mm/yyyy">
                                         <label>Día:</label>
-                                        <input class="form-control span2" size="16" type="text" value="18/05/2016">
+                                        <input id="fecha" name="fecha" class="form-control span2" size="16" type="text" value="18/05/2016">
                                         <span class="add-on"><i class="icon-th"></i></span>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                                    
+                        <!-- Text input-->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="control-group form-group">
+                                    <div class="controls">
+                                        <label>Nombre:</label>
+                                        <input id="nombre" name="nombre" class="form-control input-md" type="text" value="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>    
+                        <!-- Text input-->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="control-group form-group">
+                                    <div class="controls">
+                                        <label>Apellidos:</label>
+                                        <input id="apellidos" name="apellidos" class="form-control input-md" type="text" value="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                                    
                         <div class="row">
                             <div class="col-lg-8">
                             </div>
@@ -119,36 +143,28 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-          $(".span2").datepicker({
-         format: 'dd/mm/yyyy'
-         });
+           $(".span2").datepicker({
+            format: 'dd/mm/yyyy'
+           });
         });
         $("#submit").click(function() {
-        $.ajax({
-        type: "POST",
-        <c:if test="${action == 1}">
-        url: "${contextpath}/restaurante/0/mesa.html",
-        </c:if>
-        <c:if test="${action == 2}">
-        url: "${contextpath}/restaurante/${mesa.getIdMesa()}/mesa.html",
-        </c:if>
-        data: $("#mesa").serialize(),
+            $.ajax({
+                type: "POST",
+                url: "${contextpath}/${idRestaurante}/${nombre}/reserva.html",
+                data: $("#reserva").serialize(),
                 success: function(result){
-                if (result === "ok") {
-                window.location = "${contextpath}/restaurante/home.html";
-                } else {
-                alert("¡Datos incorrectos!");
-                }
+                    if (result === "ok") {
+                        window.location = "${contextpath}/${idRestaurante}/${nombre}/platos.html";
+                    } else {
+                        alert("¡No hay disponibilidad para esos dias!");
+                    }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
-                alert("UPS! ha habido un error en el proceso. Vuelva a intentarlo o contacte con el equipo técnico.");
+                    alert("UPS! ha habido un error en el proceso. Vuelva a intentarlo o contacte con el equipo técnico.");
                 }
+            });            
         });
-        });
-        $("#btnEliminar").click(function() {
-        $("#action").val(3);
-        $("#submit").click();
-        });
+
     </script>
 
     <jsp:include page="../scripts.jsp"/>

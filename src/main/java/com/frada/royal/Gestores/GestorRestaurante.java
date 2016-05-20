@@ -8,6 +8,7 @@ package com.frada.royal.Gestores;
 import com.frada.royal.BBDDMapper.Int_StringMapper;
 import com.frada.royal.BBDDMapper.ProductoMapper;
 import com.frada.royal.BBDDMapper.RestauranteMapper;
+import com.frada.royal.Entidades.Carrito;
 import com.frada.royal.Entidades.Int_String;
 import com.frada.royal.Entidades.Producto;
 import com.frada.royal.Entidades.Restaurante;
@@ -167,5 +168,73 @@ public class GestorRestaurante {
             restaurante.getLatitud(), restaurante.getLongitud(), restaurante.getIdRestaurante()});
     }
     
+    public boolean compruebaDisponibilidad(int idRestaurante, String fecha, int turno, int personas, int aforo) {
+        boolean response = false;
+        int ocupantes = 0;
+        try {
+            String query = ""
+                    + "SELECT SUM(ocupantes) "
+                    + "FROM COMANDA "
+                    + "WHERE idRestaurante = ? AND fecha = ? AND turno = ?";
+            ocupantes = jdbcTemplate.queryForInt(query, new Object[]{idRestaurante, fecha, turno});
+        } catch(Exception e) {
+            General.log("GestorRestaurante", "ERROR en compruebaDisponibilidad: "+e.getMessage());
+        }
+        
+        if((ocupantes + personas) <= aforo) {
+            response = true;
+        }
+        return response;
+    }
     
+    public int getIdComanda(long aleatorio) {
+        int idDisponibilidad = 0;
+        try {
+            String query = ""
+                    + "SELECT idComanda "
+                    + "FROM COMANDA "
+                    + "WHERE aleatorio = ?";
+            idDisponibilidad = jdbcTemplate.queryForInt(query, new Object[]{aleatorio});
+        } catch(Exception e) {
+            General.log("GestorRestaurante", "ERROR en getIdComanda: "+e.getMessage());
+        }
+        return idDisponibilidad;
+    }
+    
+    public long guardaReserva(int idRestaurante, String fecha, int turno, int personas, String nombre, String apellidos) {
+        long aleatorio = (int) (Math.random()*100000);
+        try {
+            String query = ""
+                    + "INSERT INTO COMANDA (idRestaurante, ocupantes, fecha, turno, nombre, apellidos, idMesa, aleatorio, pagado) "
+                    + "VALUES (?,?,?,?,?,?,?,?,0)";
+            jdbcTemplate.update(query, new Object[]{idRestaurante, personas, fecha, turno, nombre, apellidos, 0, aleatorio});
+        } catch(Exception e) {
+            General.log("GestorRestaurante", "ERROR en guardaReserva: "+e.getMessage());
+        }
+        return aleatorio;
+    }
+    
+    public void guardaDineroTotalCarrito(Carrito carrito) {
+        try {
+            String query = ""
+                    + "UPDATE COMANDA "
+                    + "SET dineroTotal = ? "
+                    + "WHERE idComanda = ?";
+            jdbcTemplate.update(query, new Object[]{carrito.getDineroTotal(), carrito.getIdComanda()});
+        } catch(Exception e) {
+            General.log("GestorRestaurante", "ERROR en guardaDineroTotalCarrito: "+e.getMessage());
+        }
+    }
+    
+    public void guardaProducto(Producto producto) {
+        try {
+            String query = ""
+                    + "INSERT INTO PEDIDO (idRestaurante, unidades, idComanda, idProducto) "
+                    + "VALUES (?,?,?,?)";
+            jdbcTemplate.update(query, new Object[]{producto.getIdRestaurante(), producto.getUnidades(), 
+                producto.getIdComanda(), producto.getIdProducto()});
+        } catch(Exception e) {
+            General.log("GestorRestaurante", "ERROR en guardaProducto: "+e.getMessage());
+        }
+    }
 }

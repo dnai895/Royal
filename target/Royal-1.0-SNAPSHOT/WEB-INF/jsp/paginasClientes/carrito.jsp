@@ -93,6 +93,24 @@
                         }
                     });
                 });
+                submit
+                $("#submit").click(function() {
+                    $.ajax({
+                    type: "POST",
+                    url: "${contextpath}/${idRestaurante}/${nombre}/carrito.html",
+                    success: function(result){
+                        if (result === "ok") {
+                            alert("Pedido guardado correctamente.");
+                        } else {
+                            alert("¡No hay disponibilidad para esos dias!");
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        alert("UPS! ha habido un error en el proceso. Vuelva a intentarlo o contacte con el equipo técnico.");
+                    }
+                    }); 
+                });
+                
             });
         </script>
     </body>
