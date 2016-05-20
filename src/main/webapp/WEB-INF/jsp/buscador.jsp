@@ -53,6 +53,14 @@
             color: #5A91CB;
             border: none !important;
         }
+        
+        .eac-item a {
+            width: 100%;
+        }
+        
+        .selected {
+            padding: 0 !important;
+        }
     </style>
 </head>
 
@@ -135,9 +143,9 @@
     
     $("#btn-buscar").click(function() {
         var item = $("#search").getSelectedItemData();
-        console.info(item);
-        console.info("name: "+item["name"]);
-        window.location = "${contextpath}/"+item["id"]+"/"+item["nombreUrl"]+"/home.html";
+        if(item["id"] != undefined && item["nombreUrl"] != undefined) {
+            window.location = "${contextpath}/"+item["id"]+"/"+item["nombreUrl"]+"/home.html";
+        }
     });
 </script>
 
