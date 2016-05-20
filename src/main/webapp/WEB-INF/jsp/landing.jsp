@@ -45,6 +45,12 @@
             </div>
         </div>
     </header>
+    <footer>
+        <div class="row">
+            Copyright - Class Royal 2016 &copy;
+            <span><a href="mailto:soporte@classroyal.com">¿Necesitas ayuda?</a></span>
+        </div>
+    </footer>
         <!-- Modal -->
     <div id="restLogin" class="modal fade" role="dialog">
       <div class="modal-dialog">

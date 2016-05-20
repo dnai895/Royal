@@ -29,35 +29,41 @@
     </head>
 
     <body>
+     <div id="ok" class="modal fade" role="dialog">
        <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Login restaurante</h4>
+            <h4 class="modal-title">Procesado correctamente</h4>
           </div>
           <div class="modal-body">
-            <form id="login" name="login" method="POST" action="${contextpath}/usuarios/landing.html">
-                <div class="control-group form-group">
-                    <div class="controls">
-                        <label>Usuario:</label>
-                        <input class="form-control" id="username" name="username" value=""/>
-                    </div>
-                </div>          
-                <div class="control-group form-group">
-                    <div class="controls">
-                        <label>Contraseña:</label>
-                        <input type="password" class="form-control" id="passwd" name="passwd" value=""/>
-                        <span class="help-block fright"><a href="${contextpath}/usuarios/registro.html">¿Aún no estás registrado? ¡Regístrate!</a></span>
-                        <input type="button" class="btn btn-primary fright" value="Entrar" id="submitRest"/>
-                    </div>
-                </div>
-            </form>
+              <span>Ya has terminado. Hemos procesado tu petición correctamente.</span>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
           </div>
         </div>
-      </div>       
+       </div>
+     </div>
+        
+     <div id="error" class="modal fade" role="dialog">
+       <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Algo ha sucedido</h4>
+          </div>
+          <div class="modal-body">
+              <span>Ha habido un error con tu petición, por favor vuelve a intentarlo o contáctanos.</span>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+       </div>
+     </div>
+        
     </body>
 </html>

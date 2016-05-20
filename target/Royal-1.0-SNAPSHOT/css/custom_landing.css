@@ -5,3 +5,8 @@ html{height: 100%;}
 body{height: 100%; overflow: hidden;}
 header{min-height: 100%; height: auto; background-image: url('../img/landing_img.jpg'); text-align: center; background-attachment: scroll; background-size: cover; background-position: center center;}
 a{width: 28%; margin: 7%; margin-top: 13%; border: 1px solid #999 !important; background-color: #305b2e !important;}
+form .controls a{background-color: transparent !important; color: #305b2e; border: none !important;}
+footer {width: 100%;}
+footer .row{text-align: left; width: 100%; float: left; margin-left: 20px; margin-top: -50px; color: white;}
+footer .row span{float: right; width: 150px; margin-right: 20px; display: block;}
+footer .row span a{background-color: transparent !important; color: white; border: none !important;}
