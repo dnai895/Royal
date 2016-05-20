@@ -49,9 +49,46 @@ public class WebControllerProcesoCompra extends ControladorFuncionesComunes {
     public ModelAndView disponibilidadMesas( @PathVariable int idRestaurante, @PathVariable String nombre, HttpServletRequest request ) {
         ModelAndView result = new ModelAndView("paginasClientes/reserva");
         cargaContenidoComun(request, result);
-        List<Mesa> lmesas = gMesas.getMesas(idRestaurante);
-        result.addObject("lmesas", lmesas);
+        result.addObject("idRestaurante", idRestaurante);
+        result.addObject("nombre", nombre);
         return result;
+    } 
+    
+    @ResponseBody
+    @RequestMapping(value="{idRestaurante}/{nombre}/reserva", method=RequestMethod.POST)
+    public String compruebaDisponibilidad( @PathVariable int idRestaurante, @PathVariable String nombre, HttpServletRequest request ) {
+        ModelAndView result = new ModelAndView("paginasClientes/reserva");
+        cargaContenidoComun(request, result);
+        String response = "";
+        
+        String fecha    = getParametroString("fecha", request);
+        int personas    = getParametroInt("personas", request);
+        int turno       = getParametroInt("turno", request);
+        String nombreC  = getParametroString("nombre", request);
+        String apellidos= getParametroString("apellidos", request);
+        
+        if(!fecha.isEmpty()) {
+            String afecha[] = fecha.split("/");
+            fecha = afecha[2]+"-"+afecha[1]+"-"+afecha[0];
+        }
+        
+        Restaurante rest = gRestaurante.getRestaurante(idRestaurante);
+        
+        boolean isDisponible = gRestaurante.compruebaDisponibilidad(rest.getIdRestaurante(), fecha, turno, personas, rest.getAforo());
+        if(isDisponible) {
+            long aleatorio = gRestaurante.guardaReserva(rest.getIdRestaurante(), fecha, turno, personas, nombreC, apellidos);
+            
+            carrito.setFecha(fecha);
+            carrito.setOcupantes(personas);
+            carrito.setTurno(turno);
+            carrito.setNombre(nombreC);
+            carrito.setApellidos(apellidos);
+            carrito.setIdDisponibilidad(gRestaurante.getIdDisponibillidad(aleatorio));
+            response = "ok";
+        } else {
+            response = "nok";
+        }
+        return response;
     } 
     
     @RequestMapping(value="{idRestaurante}/{nombre}/platos", method=RequestMethod.GET)

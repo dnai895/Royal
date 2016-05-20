@@ -167,5 +167,49 @@ public class GestorRestaurante {
             restaurante.getLatitud(), restaurante.getLongitud(), restaurante.getIdRestaurante()});
     }
     
+    public boolean compruebaDisponibilidad(int idRestaurante, String fecha, int turno, int personas, int aforo) {
+        boolean response = false;
+        int ocupantes = 0;
+        try {
+            String query = ""
+                    + "SELECT SUM(disponibilidad) "
+                    + "FROM DISPONIBILIDAD_MESAS "
+                    + "WHERE idRestaurante = ? AND fecha = ? AND turno = ?";
+            ocupantes = jdbcTemplate.queryForInt(query, new Object[]{idRestaurante, fecha, turno});
+        } catch(Exception e) {
+            General.log("GestorRestaurante", "ERROR en compruebaDisponibilidad: "+e.getMessage());
+        }
+        
+        if((ocupantes + personas) <= aforo) {
+            response = true;
+        }
+        return response;
+    }
     
+    public int getIdDisponibillidad(long aleatorio) {
+        int idDisponibilidad = 0;
+        try {
+            String query = ""
+                    + "SELECT idDisponibilidad "
+                    + "FROM DISPONIBILIDAD_MESAS "
+                    + "WHERE aleatorio = ?";
+            idDisponibilidad = jdbcTemplate.queryForInt(query, new Object[]{aleatorio});
+        } catch(Exception e) {
+            General.log("GestorRestaurante", "ERROR en compruebaDisponibilidad: "+e.getMessage());
+        }
+        return idDisponibilidad;
+    }
+    
+    public long guardaReserva(int idRestaurante, String fecha, int turno, int personas, String nombre, String apellidos) {
+        long aleatorio = (int) (Math.random()*100000);
+        try {
+            String query = ""
+                    + "INSERT INTO DISPONIBILIDAD_MESAS (idRestaurante, disponibilidad, fecha, turno, nombre, apellidos, idMesa, aleatorio) "
+                    + "VALUES (?,?,?,?,?,?,?,?)";
+            jdbcTemplate.update(query, new Object[]{idRestaurante, personas, fecha, turno, nombre, apellidos, 0, aleatorio});
+        } catch(Exception e) {
+            General.log("GestorRestaurante", "ERROR en guardaReserva: "+e.getMessage());
+        }
+        return aleatorio;
+    }
 }
