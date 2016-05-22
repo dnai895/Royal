@@ -106,6 +106,12 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="well">
+                        <label for="comment">Consideraciones:</label>
+                        <textarea class="form-control" rows="5" id="comments"></textarea>
+                    </div>
+                </div>
                 <input type="hidden" id="productos" name="productos" value="" />
             </form>
             <!-- /.row -->
