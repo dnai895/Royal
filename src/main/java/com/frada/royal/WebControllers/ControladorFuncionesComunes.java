@@ -70,6 +70,21 @@ public class ControladorFuncionesComunes {
         return param;
     }
     
+    public int getParametroIntDefectoMenosUno(String parametro, HttpServletRequest request) {
+        int param = 0;
+        if(request.getParameter(parametro) != null && !request.getParameter(parametro).isEmpty()) {
+            try {
+                param = Integer.parseInt(request.getParameter(parametro));
+            } catch (NumberFormatException e) {
+                param = -1;
+            }
+        }
+        if(param == 0) {
+            param = -1;
+        }
+        return param;
+    }
+    
     public double getParametroDouble(String parametro, HttpServletRequest request) {
         double param = 0;
         if(request.getParameter(parametro) != null && !request.getParameter(parametro).isEmpty()) {

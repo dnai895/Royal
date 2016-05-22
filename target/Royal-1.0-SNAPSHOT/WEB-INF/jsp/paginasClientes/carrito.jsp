@@ -14,7 +14,7 @@
         <jsp:include page="../css.jsp"/>
     </head>
     <body><!-- Page Content -->
-        <jsp:include page="../bloques/menuRestaurante.jsp"/>
+        <jsp:include page="../bloques/menuCliente.jsp"/>
         <div class="container">
 
             <div class="row">
@@ -74,6 +74,8 @@
             </c:forEach>
 
         </div>
+        
+        <jsp:include page="../err_ok_modal.jsp" />
 
         <!-- /.row -->
 
@@ -89,24 +91,28 @@
                         url: "${contextpath}/${idRestaurante}/carrito/delete.html",
                         data: {producto: producto},
                         error: function (jqXHR, textStatus, errorThrown) {
-                            alert("UPS! ha habido un error en el proceso. Vuelva a intentarlo o contacte con el equipo técnico.");
+                            muestraAlertKO();
                         }
                     });
                 });
-                submit
                 $("#submit").click(function() {
                     $.ajax({
                     type: "POST",
                     url: "${contextpath}/${idRestaurante}/${nombre}/carrito.html",
                     success: function(result){
                         if (result === "ok") {
-                            alert("Pedido guardado correctamente.");
+                          //  alert("Pedido guardado correctamente.");
+                          //$("#ok").modal('show');
+                          muestraAlertOk("<p>Ya has terminado. Hemos procesado tu petición correctamente.</p>\n\
+                                          <p>Cuando vayas al restaurante pregunta por tu reserva en recepción. <p>\n\
+                                          <br/> \n\
+                                          <strong>Gracias por usar nuestros servicios.</strong>");        
                         } else {
-                            alert("¡No hay disponibilidad para esos dias!");
+                            muestraAlertKO();
                         }
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
-                        alert("UPS! ha habido un error en el proceso. Vuelva a intentarlo o contacte con el equipo técnico.");
+                        muestraAlertKO();
                     }
                     }); 
                 });

@@ -5,6 +5,7 @@
  */
 package com.frada.royal.Gestores;
 
+import com.frada.royal.BBDDMapper.ComandasMapper;
 import com.frada.royal.BBDDMapper.Int_StringMapper;
 import com.frada.royal.BBDDMapper.ProductoMapper;
 import com.frada.royal.BBDDMapper.RestauranteMapper;
@@ -237,4 +238,46 @@ public class GestorRestaurante {
             General.log("GestorRestaurante", "ERROR en guardaProducto: "+e.getMessage());
         }
     }
+    
+    public List<Carrito> getPedidos(int idRestaurante, String fechaInicio, String fechaFin, int isPagado, int turno) {
+        List<Carrito> lpedidos = null;
+        String filtroFechaInicio    = ""; 
+        String filtroFechaFin       = "";
+        String filtroPagado         = "";
+        String filtroTurno          = "";
+        if(fechaInicio != null && !fechaInicio.isEmpty()) {
+            filtroFechaInicio = " AND fecha >= '"+fechaInicio+"' ";
+        }
+        if(fechaFin != null && !fechaFin.isEmpty()) {
+            filtroFechaFin = " AND fecha <= '"+fechaFin+"' ";
+        }
+        if(isPagado != -1) {
+            filtroPagado = " AND pagado = "+isPagado+" ";
+        }
+        if(turno != -1) {
+            filtroTurno = " AND turno = "+turno+" ";
+        }
+        try {
+            String query = ""
+                    + "SELECT idRestaurante, idComanda, fecha, pagado, dineroPagado, dineroTotal, ocupantes, turno,"
+                    + "nombre, apellidos "
+                    + "FROM COMANDA c "
+                    + "WHERE idRestaurante = ? "+filtroFechaInicio+filtroFechaFin+filtroTurno+filtroPagado
+                    + "ORDER BY fecha ";
+            General.log("GestorRestaurante", "getPedidos query : "+query);
+            lpedidos = jdbcTemplate.query(query, new ComandasMapper(), new Object[]{idRestaurante});
+        } catch (Exception e) {
+            General.log("GestorRestaurante", "ERROR en getPedidos: "+e.getMessage());
+        }
+        return lpedidos;
+    }
+    
+    public void marcarPedidoPagado(int idRestaurante, int idComanda) {
+        try {
+            String query = "UPDATE COMANDA SET pagado = 1 WHERE idRestaurante = ? AND idComanda = ?";
+            jdbcTemplate.update(query, new Object[]{idRestaurante, idComanda});
+        } catch(Exception e) {
+            General.log("GestorRestaurante", "ERROR en marcarPedidoPagado: "+e.getMessage());
+        }
+    } 
 }

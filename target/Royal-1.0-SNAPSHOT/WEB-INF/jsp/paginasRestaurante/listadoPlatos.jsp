@@ -13,9 +13,9 @@
         <title>Platos | Class Royal</title>
         <jsp:include page="../css.jsp"/>
     </head>
-    <body><!-- Page Content -->
+    <body class="body-backoffice"><!-- Page Content -->
         <jsp:include page="../bloques/menuRestaurante.jsp"/>
-        <div class="container">
+        <div class="container ">
 
             <div class="row">
                 <div class="row">

@@ -47,7 +47,7 @@
                                 <a href="#">Clientes</a>
                             </li>
                             <li>
-                                <a href="#">Ventas</a>
+                                <a href="${contextpath}/pedidos/reservas.html">Ventas</a>
                             </li>
                         </ul>
                     </li>

@@ -32,6 +32,7 @@ rosa */
 */
 .panel {
     background: #FAF0D1;
+    padding-bottom: 25px;
 }
 .container {
     width: 910px;
@@ -95,4 +96,23 @@ rosa */
 .navbar-inverse {
     background-color: #5c5c5c;
     border-color: #080808;
+}
+
+.success {
+    background: #5cb85c;
+    border-radius: 4px;
+}
+
+.danger {
+    background: #d9534f;
+    border-radius: 4px;
+}
+
+.modal-dialog {
+    margin: 14% auto;
+    width: 600px;
+}
+
+.body-backoffice {
+    background: #FFFDF3;
 }

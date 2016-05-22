@@ -14,7 +14,7 @@
         
         <jsp:include page="../css.jsp"/>
     </head>
-    <body>
+    <body class="body-backoffice">
 
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">

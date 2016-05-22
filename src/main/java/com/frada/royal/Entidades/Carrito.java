@@ -14,17 +14,20 @@ import java.util.List;
  */
 public class Carrito implements Serializable {
     
-    private int idMesa;
-    private int idPedido;
-    private int ocupantes;
-    private int turno;
-    private int numeromesa;
+    private int     idMesa;
+    private int     idPedido;
+    private int     ocupantes;
+    private int     turno;
+    private int     numeromesa;
     private List<Producto> lproductos;
-    private String fecha;
-    private Mesa mesa;
-    private String nombre;
-    private String apellidos;
-    private int idComanda;
+    private String  fecha;
+    private Mesa    mesa;
+    private String  nombre;
+    private String  apellidos;
+    private int     idComanda;
+    private double  dineroPagado;
+    private double  factura;
+    private int     pagado;
 
     public int getIdMesa() {
         return idMesa;
@@ -121,4 +124,37 @@ public class Carrito implements Serializable {
         }
         return dineroTotal;
     }
+
+    public double getDineroPagado() {
+        return dineroPagado;
+    }
+
+    public void setDineroPagado(double dineroPagado) {
+        this.dineroPagado = dineroPagado;
+    }
+
+    public double getFactura() {
+        return factura;
+    }
+
+    public void setFactura(double factura) {
+        this.factura = factura;
+    }
+
+    public int getPagado() {
+        return pagado;
+    }
+
+    public void setPagado(int pagado) {
+        this.pagado = pagado;
+    }
+    
+    public String isPagado() {
+        if(this.pagado == 1) {
+            return "Sí";
+        } else {
+            return "No";
+        }
+    }
+    
 }

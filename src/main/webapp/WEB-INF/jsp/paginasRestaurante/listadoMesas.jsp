@@ -13,7 +13,7 @@
         <title>Mesas | Class Royal</title>
         <jsp:include page="../css.jsp"/>
     </head>
-    <body><!-- Page Content -->
+    <body class="body-backoffice"><!-- Page Content -->
         <jsp:include page="../bloques/menuRestaurante.jsp"/>
         <div class="container">
 

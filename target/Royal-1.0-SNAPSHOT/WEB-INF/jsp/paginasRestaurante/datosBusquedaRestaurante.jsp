@@ -14,7 +14,7 @@
 
         <jsp:include page="../css.jsp"/>
     </head>
-    <body>
+    <body class="body-backoffice">
 
         <jsp:include page="../bloques/menuRestaurante.jsp"/>
 
